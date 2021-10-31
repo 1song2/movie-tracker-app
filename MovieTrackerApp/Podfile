@@ -7,6 +7,7 @@ target 'MovieTrackerApp' do
 
   # Pods for MovieTrackerApp
   pod 'SwiftLint'
+  pod 'Alamofire', '~> 5.4'
 
   target 'MovieTrackerAppTests' do
     inherit! :search_paths

@@ -17,6 +17,7 @@
 		E486FA20272EF5A900B10BDA /* MovieTrackerAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA1F272EF5A900B10BDA /* MovieTrackerAppTests.swift */; };
 		E486FA2A272EF5A900B10BDA /* MovieTrackerAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA29272EF5A900B10BDA /* MovieTrackerAppUITests.swift */; };
 		E486FA2C272EF5A900B10BDA /* MovieTrackerAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA2B272EF5A900B10BDA /* MovieTrackerAppUITestsLaunchTests.swift */; };
+		E486FA3D272F004700B10BDA /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E486FA3C272F004700B10BDA /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		E486FA25272EF5A900B10BDA /* MovieTrackerAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieTrackerAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E486FA29272EF5A900B10BDA /* MovieTrackerAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTrackerAppUITests.swift; sourceTree = "<group>"; };
 		E486FA2B272EF5A900B10BDA /* MovieTrackerAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTrackerAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E486FA3C272F004700B10BDA /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		FCE4ABED97AD8F7EE67FC0C3 /* Pods-MovieTrackerApp-MovieTrackerAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTrackerApp-MovieTrackerAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-MovieTrackerApp-MovieTrackerAppUITests/Pods-MovieTrackerApp-MovieTrackerAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FF0C44AD51EBF019ED19654E /* Pods-MovieTrackerApp-MovieTrackerAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTrackerApp-MovieTrackerAppUITests.release.xcconfig"; path = "Target Support Files/Pods-MovieTrackerApp-MovieTrackerAppUITests/Pods-MovieTrackerApp-MovieTrackerAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +115,7 @@
 		E486F9FC272EF5A500B10BDA = {
 			isa = PBXGroup;
 			children = (
+				E486FA3C272F004700B10BDA /* .swiftlint.yml */,
 				E486FA07272EF5A500B10BDA /* MovieTrackerApp */,
 				E486FA1E272EF5A900B10BDA /* MovieTrackerAppTests */,
 				E486FA28272EF5A900B10BDA /* MovieTrackerAppUITests */,
@@ -197,6 +200,7 @@
 				E486FA02272EF5A500B10BDA /* Frameworks */,
 				E486FA03272EF5A500B10BDA /* Resources */,
 				E486FA3B272EFD2800B10BDA /* ShellScript */,
+				FC0717D1637A8658404FF64B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -234,6 +238,7 @@
 				E486FA21272EF5A900B10BDA /* Sources */,
 				E486FA22272EF5A900B10BDA /* Frameworks */,
 				E486FA23272EF5A900B10BDA /* Resources */,
+				0005409EED0E1A9F8F565ADD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -293,6 +298,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E486FA3D272F004700B10BDA /* .swiftlint.yml in Resources */,
 				E486FA15272EF5A800B10BDA /* LaunchScreen.storyboard in Resources */,
 				E486FA12272EF5A800B10BDA /* Assets.xcassets in Resources */,
 			);
@@ -315,6 +321,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0005409EED0E1A9F8F565ADD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MovieTrackerApp-MovieTrackerAppUITests/Pods-MovieTrackerApp-MovieTrackerAppUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MovieTrackerApp-MovieTrackerAppUITests/Pods-MovieTrackerApp-MovieTrackerAppUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MovieTrackerApp-MovieTrackerAppUITests/Pods-MovieTrackerApp-MovieTrackerAppUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		05334617588FAEB8B9EBB4D0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -397,6 +420,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
+		};
+		FC0717D1637A8658404FF64B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MovieTrackerApp/Pods-MovieTrackerApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MovieTrackerApp/Pods-MovieTrackerApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MovieTrackerApp/Pods-MovieTrackerApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
