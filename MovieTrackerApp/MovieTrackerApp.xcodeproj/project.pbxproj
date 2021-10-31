@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E486FA09272EF5A500B10BDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA08272EF5A500B10BDA /* AppDelegate.swift */; };
-		E486FA0B272EF5A500B10BDA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA0A272EF5A500B10BDA /* SceneDelegate.swift */; };
 		E486FA0D272EF5A500B10BDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA0C272EF5A500B10BDA /* ViewController.swift */; };
-		E486FA10272EF5A500B10BDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E486FA0E272EF5A500B10BDA /* Main.storyboard */; };
 		E486FA12272EF5A800B10BDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E486FA11272EF5A800B10BDA /* Assets.xcassets */; };
 		E486FA15272EF5A800B10BDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E486FA13272EF5A800B10BDA /* LaunchScreen.storyboard */; };
 		E486FA20272EF5A900B10BDA /* MovieTrackerAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA1F272EF5A900B10BDA /* MovieTrackerAppTests.swift */; };
@@ -38,9 +36,7 @@
 /* Begin PBXFileReference section */
 		E486FA05272EF5A500B10BDA /* MovieTrackerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieTrackerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E486FA08272EF5A500B10BDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E486FA0A272EF5A500B10BDA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E486FA0C272EF5A500B10BDA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E486FA0F272EF5A500B10BDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E486FA11272EF5A800B10BDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E486FA14272EF5A800B10BDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E486FA16272EF5A800B10BDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -100,9 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				E486FA08272EF5A500B10BDA /* AppDelegate.swift */,
-				E486FA0A272EF5A500B10BDA /* SceneDelegate.swift */,
 				E486FA0C272EF5A500B10BDA /* ViewController.swift */,
-				E486FA0E272EF5A500B10BDA /* Main.storyboard */,
 				E486FA11272EF5A800B10BDA /* Assets.xcassets */,
 				E486FA13272EF5A800B10BDA /* LaunchScreen.storyboard */,
 				E486FA16272EF5A800B10BDA /* Info.plist */,
@@ -233,7 +227,6 @@
 			files = (
 				E486FA15272EF5A800B10BDA /* LaunchScreen.storyboard in Resources */,
 				E486FA12272EF5A800B10BDA /* Assets.xcassets in Resources */,
-				E486FA10272EF5A500B10BDA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,7 +253,6 @@
 			files = (
 				E486FA0D272EF5A500B10BDA /* ViewController.swift in Sources */,
 				E486FA09272EF5A500B10BDA /* AppDelegate.swift in Sources */,
-				E486FA0B272EF5A500B10BDA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +289,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E486FA0E272EF5A500B10BDA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E486FA0F272EF5A500B10BDA /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E486FA13272EF5A800B10BDA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -444,7 +428,6 @@
 				INFOPLIST_FILE = MovieTrackerApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -473,7 +456,6 @@
 				INFOPLIST_FILE = MovieTrackerApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
