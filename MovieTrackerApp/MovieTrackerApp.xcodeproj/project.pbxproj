@@ -20,6 +20,7 @@
 		E486FA3D272F004700B10BDA /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E486FA3C272F004700B10BDA /* .swiftlint.yml */; };
 		E486FA3F272F064200B10BDA /* AppConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA3E272F064200B10BDA /* AppConfigurations.swift */; };
 		E486FA43272FB66000B10BDA /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA42272FB66000B10BDA /* NetworkConfig.swift */; };
+		E486FA47272FB7DA00B10BDA /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA46272FB7DA00B10BDA /* Endpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		E486FA3C272F004700B10BDA /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		E486FA3E272F064200B10BDA /* AppConfigurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurations.swift; sourceTree = "<group>"; };
 		E486FA42272FB66000B10BDA /* NetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
+		E486FA46272FB7DA00B10BDA /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		FCE4ABED97AD8F7EE67FC0C3 /* Pods-MovieTrackerApp-MovieTrackerAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTrackerApp-MovieTrackerAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-MovieTrackerApp-MovieTrackerAppUITests/Pods-MovieTrackerApp-MovieTrackerAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FF0C44AD51EBF019ED19654E /* Pods-MovieTrackerApp-MovieTrackerAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTrackerApp-MovieTrackerAppUITests.release.xcconfig"; path = "Target Support Files/Pods-MovieTrackerApp-MovieTrackerAppUITests/Pods-MovieTrackerApp-MovieTrackerAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -197,6 +199,7 @@
 		E486FA44272FB6B300B10BDA /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				E486FA46272FB7DA00B10BDA /* Endpoint.swift */,
 				E486FA42272FB66000B10BDA /* NetworkConfig.swift */,
 			);
 			path = Network;
@@ -471,6 +474,7 @@
 				E486FA43272FB66000B10BDA /* NetworkConfig.swift in Sources */,
 				E486FA3F272F064200B10BDA /* AppConfigurations.swift in Sources */,
 				E486FA09272EF5A500B10BDA /* AppDelegate.swift in Sources */,
+				E486FA47272FB7DA00B10BDA /* Endpoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
