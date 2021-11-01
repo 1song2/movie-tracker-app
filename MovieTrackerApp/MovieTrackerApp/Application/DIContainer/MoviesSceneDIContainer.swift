@@ -24,3 +24,5 @@ final class MoviesSceneDIContainer {
         return MoviesViewController.create()
     }
 }
+
+extension MoviesSceneDIContainer: MoviesSearchFlowCoordinatorDependencies {}

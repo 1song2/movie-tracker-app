@@ -29,6 +29,7 @@
 		E486FA58272FCB5800B10BDA /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA57272FCB5800B10BDA /* APIEndpoints.swift */; };
 		E486FA5A272FD2EA00B10BDA /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA59272FD2EA00B10BDA /* AppDIContainer.swift */; };
 		E486FA5D272FD52800B10BDA /* MoviesSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA5C272FD52800B10BDA /* MoviesSceneDIContainer.swift */; };
+		E486FA60272FD7C400B10BDA /* MoviesSearchFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA5F272FD7C400B10BDA /* MoviesSearchFlowCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		E486FA57272FCB5800B10BDA /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
 		E486FA59272FD2EA00B10BDA /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		E486FA5C272FD52800B10BDA /* MoviesSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesSceneDIContainer.swift; sourceTree = "<group>"; };
+		E486FA5F272FD7C400B10BDA /* MoviesSearchFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesSearchFlowCoordinator.swift; sourceTree = "<group>"; };
 		FCE4ABED97AD8F7EE67FC0C3 /* Pods-MovieTrackerApp-MovieTrackerAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTrackerApp-MovieTrackerAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-MovieTrackerApp-MovieTrackerAppUITests/Pods-MovieTrackerApp-MovieTrackerAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FF0C44AD51EBF019ED19654E /* Pods-MovieTrackerApp-MovieTrackerAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTrackerApp-MovieTrackerAppUITests.release.xcconfig"; path = "Target Support Files/Pods-MovieTrackerApp-MovieTrackerAppUITests/Pods-MovieTrackerApp-MovieTrackerAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -200,7 +202,7 @@
 		E486FA39272EFB2800B10BDA /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				E486FA0C272EF5A500B10BDA /* MoviesViewController.swift */,
+				E486FA5E272FD79900B10BDA /* MoviesScene */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -283,6 +285,15 @@
 				E486FA5C272FD52800B10BDA /* MoviesSceneDIContainer.swift */,
 			);
 			path = DIContainer;
+			sourceTree = "<group>";
+		};
+		E486FA5E272FD79900B10BDA /* MoviesScene */ = {
+			isa = PBXGroup;
+			children = (
+				E486FA5F272FD7C400B10BDA /* MoviesSearchFlowCoordinator.swift */,
+				E486FA0C272EF5A500B10BDA /* MoviesViewController.swift */,
+			);
+			path = MoviesScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -553,6 +564,7 @@
 				E486FA09272EF5A500B10BDA /* AppDelegate.swift in Sources */,
 				E486FA5A272FD2EA00B10BDA /* AppDIContainer.swift in Sources */,
 				E486FA49272FBAE600B10BDA /* NetworkService.swift in Sources */,
+				E486FA60272FD7C400B10BDA /* MoviesSearchFlowCoordinator.swift in Sources */,
 				E486FA4D272FC08400B10BDA /* Movie.swift in Sources */,
 				E486FA47272FB7DA00B10BDA /* Endpoint.swift in Sources */,
 			);
