@@ -23,6 +23,7 @@
 		E486FA47272FB7DA00B10BDA /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA46272FB7DA00B10BDA /* Endpoint.swift */; };
 		E486FA49272FBAE600B10BDA /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA48272FBAE600B10BDA /* NetworkService.swift */; };
 		E486FA4B272FBB6300B10BDA /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA4A272FBB6300B10BDA /* APIClient.swift */; };
+		E486FA4D272FC08400B10BDA /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA4C272FC08400B10BDA /* Movie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		E486FA46272FB7DA00B10BDA /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		E486FA48272FBAE600B10BDA /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		E486FA4A272FBB6300B10BDA /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		E486FA4C272FC08400B10BDA /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		FCE4ABED97AD8F7EE67FC0C3 /* Pods-MovieTrackerApp-MovieTrackerAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTrackerApp-MovieTrackerAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-MovieTrackerApp-MovieTrackerAppUITests/Pods-MovieTrackerApp-MovieTrackerAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FF0C44AD51EBF019ED19654E /* Pods-MovieTrackerApp-MovieTrackerAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTrackerApp-MovieTrackerAppUITests.release.xcconfig"; path = "Target Support Files/Pods-MovieTrackerApp-MovieTrackerAppUITests/Pods-MovieTrackerApp-MovieTrackerAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,6 +152,7 @@
 			children = (
 				E486FA38272EFB1C00B10BDA /* Application */,
 				E486FA39272EFB2800B10BDA /* Presentation */,
+				E486FA4F272FC09A00B10BDA /* Domain */,
 				E486FA45272FB6BE00B10BDA /* Infrastructure */,
 				E486FA3A272EFB3800B10BDA /* Resources */,
 			);
@@ -217,6 +220,22 @@
 				E486FA44272FB6B300B10BDA /* Network */,
 			);
 			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		E486FA4E272FC08F00B10BDA /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				E486FA4C272FC08400B10BDA /* Movie.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		E486FA4F272FC09A00B10BDA /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				E486FA4E272FC08F00B10BDA /* Entities */,
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -482,6 +501,7 @@
 				E486FA3F272F064200B10BDA /* AppConfigurations.swift in Sources */,
 				E486FA09272EF5A500B10BDA /* AppDelegate.swift in Sources */,
 				E486FA49272FBAE600B10BDA /* NetworkService.swift in Sources */,
+				E486FA4D272FC08400B10BDA /* Movie.swift in Sources */,
 				E486FA47272FB7DA00B10BDA /* Endpoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
