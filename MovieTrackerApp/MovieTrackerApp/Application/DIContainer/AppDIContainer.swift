@@ -18,4 +18,10 @@ final class AppDIContainer {
                                                     "X-Naver-Client-Secret": appConfiguration.clientSecret])
         return DefaultAPIClient(config: config, session: AF)
     }()
+    
+    // MARK: - DIContainers of scenes
+    func makeMoviesSceneDIContainer() -> MoviesSceneDIContainer {
+        let dependencies = MoviesSceneDIContainer.Dependencies(apiClient: apiClient)
+        return MoviesSceneDIContainer(dependencies: dependencies)
+    }
 }

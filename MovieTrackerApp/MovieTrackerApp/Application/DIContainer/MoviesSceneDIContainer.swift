@@ -5,7 +5,7 @@
 //  Created by Song on 2021/11/01.
 //
 
-import Foundation
+import UIKit
 
 final class MoviesSceneDIContainer {
     struct Dependencies {
@@ -22,6 +22,12 @@ final class MoviesSceneDIContainer {
     
     func makeMoviesViewController() -> MoviesViewController {
         return MoviesViewController.create()
+    }
+    
+    // MARK: - Flow Coordinators
+    func makeMoviesSearchFlowCoordinator(navigationController: UINavigationController) -> MoviesSearchFlowCoordinator {
+        return MoviesSearchFlowCoordinator(navigationController: navigationController,
+                                           dependencies: self)
     }
 }
 
