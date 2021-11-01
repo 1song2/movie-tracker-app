@@ -14,4 +14,16 @@ final class AppConfiguration {
         }
         return apiBaseURL
     }()
+    lazy var clientID: String = {
+        guard let clientID = Bundle.main.object(forInfoDictionaryKey: "ClientID") as? String else {
+            fatalError("ClientID must not be empty in plist")
+        }
+        return clientID
+    }()
+    lazy var clientSecret: String = {
+        guard let clientSecret = Bundle.main.object(forInfoDictionaryKey: "ClientSecret") as? String else {
+            fatalError("ClientSecret must not be empty in plist")
+        }
+        return clientSecret
+    }()
 }
