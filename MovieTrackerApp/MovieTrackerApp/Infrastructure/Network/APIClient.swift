@@ -17,7 +17,7 @@ enum APIError: Error {
 }
 
 protocol APIClient {
-    func request<T: Decodable>(endpoint: Requestable) throws -> Observable<T>
+    func getMovies(query: String) -> Observable<MoviesResponseDTO>
 }
 
 // MARK: - Implementation
@@ -26,7 +26,7 @@ final class DefaultAPIClient {
     private let config: NetworkConfigurable
     private let session: NetworkSession
     
-    public init(config: NetworkConfigurable, session: NetworkSession) {
+    init(config: NetworkConfigurable, session: NetworkSession) {
         self.config = config
         self.session = session
     }
@@ -69,13 +69,8 @@ final class DefaultAPIClient {
 }
 
 extension DefaultAPIClient: APIClient {
-    func request<T: Decodable>(endpoint: Requestable) throws -> Observable<T> {
-        do {
-            let urlRequest = try endpoint.urlRequest(with: config)
-            return request(urlRequest)
-        } catch {
-            throw NetworkError.urlGeneration
-        }
+    func getMovies(query: String) -> Observable<MoviesResponseDTO> {
+        return request(Router.getMovies(query: query))
     }
 }
 

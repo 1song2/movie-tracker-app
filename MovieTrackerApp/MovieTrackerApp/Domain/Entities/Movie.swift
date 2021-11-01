@@ -10,10 +10,10 @@ import Foundation
 struct Movie {
     let title: String?
     let link: String?
-    let releaseDate: Date?
+    let releaseYear: Int?
     let director: String?
     let cast: String?
-    let userRating: Int?
+    let userRating: String?
 }
 
 struct Movies {

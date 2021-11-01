@@ -19,17 +19,17 @@ extension MoviesResponseDTO {
         private enum CodingKeys: String, CodingKey {
             case title
             case link
-            case releaseDate = "pubDate"
+            case releaseYear = "pubDate"
             case director
             case cast = "actor"
             case userRating
         }
         let title: String?
         let link: String?
-        let releaseDate: Date?
+        let releaseYear: String?
         let director: String?
         let cast: String?
-        let userRating: Int?
+        let userRating: String?
     }
 }
 
@@ -45,7 +45,7 @@ extension MoviesResponseDTO.MovieDTO {
     func toDomain() -> Movie {
         return .init(title: title,
                      link: link,
-                     releaseDate: releaseDate,
+                     releaseYear: Int(releaseYear ?? ""),
                      director: director,
                      cast: cast,
                      userRating: userRating)
