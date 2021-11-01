@@ -7,8 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class MoviesViewController: UIViewController {
+    static func create() -> MoviesViewController {
+        return MoviesViewController()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
