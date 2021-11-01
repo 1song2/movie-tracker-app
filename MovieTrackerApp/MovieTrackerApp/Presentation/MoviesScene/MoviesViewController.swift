@@ -14,5 +14,6 @@ class MoviesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "나의 영화 노트" // viewModel.screenTitle
     }
 }
