@@ -26,7 +26,7 @@ final class DefaultAPIClient {
     private let config: NetworkConfigurable
     private let session: NetworkSession
     
-    public init(config: NetworkConfigurable, session: NetworkSession) {
+    init(config: NetworkConfigurable, session: NetworkSession) {
         self.config = config
         self.session = session
     }
