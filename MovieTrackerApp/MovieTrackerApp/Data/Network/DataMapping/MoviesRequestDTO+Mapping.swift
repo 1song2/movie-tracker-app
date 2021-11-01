@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct MoviesRequestDTO {
+struct MoviesRequestDTO: Encodable {
     let query: String
 }
