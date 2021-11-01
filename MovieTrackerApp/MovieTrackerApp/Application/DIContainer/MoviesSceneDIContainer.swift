@@ -25,8 +25,8 @@ final class MoviesSceneDIContainer {
     }
     
     // MARK: - Flow Coordinators
-    func makeMoviesSearchFlowCoordinator(navigationController: UINavigationController) -> MoviesSearchFlowCoordinator {
-        return MoviesSearchFlowCoordinator(navigationController: navigationController,
+    func makeMoviesSearchFlowCoordinator(tabBarController: UITabBarController) -> MoviesSearchFlowCoordinator {
+        return MoviesSearchFlowCoordinator(tabBarController: tabBarController,
                                            dependencies: self)
     }
 }
