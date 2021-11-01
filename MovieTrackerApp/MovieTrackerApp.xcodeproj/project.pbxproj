@@ -18,6 +18,15 @@
 		E486FA2A272EF5A900B10BDA /* MovieTrackerAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA29272EF5A900B10BDA /* MovieTrackerAppUITests.swift */; };
 		E486FA2C272EF5A900B10BDA /* MovieTrackerAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA2B272EF5A900B10BDA /* MovieTrackerAppUITestsLaunchTests.swift */; };
 		E486FA3D272F004700B10BDA /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E486FA3C272F004700B10BDA /* .swiftlint.yml */; };
+		E486FA3F272F064200B10BDA /* AppConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA3E272F064200B10BDA /* AppConfigurations.swift */; };
+		E486FA43272FB66000B10BDA /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA42272FB66000B10BDA /* NetworkConfig.swift */; };
+		E486FA47272FB7DA00B10BDA /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA46272FB7DA00B10BDA /* Endpoint.swift */; };
+		E486FA49272FBAE600B10BDA /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA48272FBAE600B10BDA /* NetworkService.swift */; };
+		E486FA4B272FBB6300B10BDA /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA4A272FBB6300B10BDA /* APIClient.swift */; };
+		E486FA4D272FC08400B10BDA /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA4C272FC08400B10BDA /* Movie.swift */; };
+		E486FA51272FC51E00B10BDA /* MoviesRequestDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA50272FC51E00B10BDA /* MoviesRequestDTO+Mapping.swift */; };
+		E486FA53272FC52800B10BDA /* MoviesResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA52272FC52800B10BDA /* MoviesResponseDTO+Mapping.swift */; };
+		E486FA58272FCB5800B10BDA /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA57272FCB5800B10BDA /* APIEndpoints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +66,15 @@
 		E486FA29272EF5A900B10BDA /* MovieTrackerAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTrackerAppUITests.swift; sourceTree = "<group>"; };
 		E486FA2B272EF5A900B10BDA /* MovieTrackerAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTrackerAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E486FA3C272F004700B10BDA /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		E486FA3E272F064200B10BDA /* AppConfigurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurations.swift; sourceTree = "<group>"; };
+		E486FA42272FB66000B10BDA /* NetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
+		E486FA46272FB7DA00B10BDA /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		E486FA48272FBAE600B10BDA /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		E486FA4A272FBB6300B10BDA /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		E486FA4C272FC08400B10BDA /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		E486FA50272FC51E00B10BDA /* MoviesRequestDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoviesRequestDTO+Mapping.swift"; sourceTree = "<group>"; };
+		E486FA52272FC52800B10BDA /* MoviesResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoviesResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
+		E486FA57272FCB5800B10BDA /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
 		FCE4ABED97AD8F7EE67FC0C3 /* Pods-MovieTrackerApp-MovieTrackerAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTrackerApp-MovieTrackerAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-MovieTrackerApp-MovieTrackerAppUITests/Pods-MovieTrackerApp-MovieTrackerAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FF0C44AD51EBF019ED19654E /* Pods-MovieTrackerApp-MovieTrackerAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTrackerApp-MovieTrackerAppUITests.release.xcconfig"; path = "Target Support Files/Pods-MovieTrackerApp-MovieTrackerAppUITests/Pods-MovieTrackerApp-MovieTrackerAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,6 +158,9 @@
 			children = (
 				E486FA38272EFB1C00B10BDA /* Application */,
 				E486FA39272EFB2800B10BDA /* Presentation */,
+				E486FA4F272FC09A00B10BDA /* Domain */,
+				E486FA56272FC7A100B10BDA /* Data */,
+				E486FA45272FB6BE00B10BDA /* Infrastructure */,
 				E486FA3A272EFB3800B10BDA /* Resources */,
 			);
 			path = MovieTrackerApp;
@@ -166,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				E486FA08272EF5A500B10BDA /* AppDelegate.swift */,
+				E486FA3E272F064200B10BDA /* AppConfigurations.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -186,6 +208,67 @@
 				E486FA16272EF5A800B10BDA /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		E486FA44272FB6B300B10BDA /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E486FA4A272FBB6300B10BDA /* APIClient.swift */,
+				E486FA48272FBAE600B10BDA /* NetworkService.swift */,
+				E486FA46272FB7DA00B10BDA /* Endpoint.swift */,
+				E486FA42272FB66000B10BDA /* NetworkConfig.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		E486FA45272FB6BE00B10BDA /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				E486FA44272FB6B300B10BDA /* Network */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		E486FA4E272FC08F00B10BDA /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				E486FA4C272FC08400B10BDA /* Movie.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		E486FA4F272FC09A00B10BDA /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				E486FA4E272FC08F00B10BDA /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		E486FA54272FC78A00B10BDA /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				E486FA50272FC51E00B10BDA /* MoviesRequestDTO+Mapping.swift */,
+				E486FA52272FC52800B10BDA /* MoviesResponseDTO+Mapping.swift */,
+			);
+			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		E486FA55272FC79700B10BDA /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E486FA57272FCB5800B10BDA /* APIEndpoints.swift */,
+				E486FA54272FC78A00B10BDA /* DataMapping */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		E486FA56272FC7A100B10BDA /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				E486FA55272FC79700B10BDA /* Network */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -446,7 +529,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				E486FA0D272EF5A500B10BDA /* ViewController.swift in Sources */,
+				E486FA51272FC51E00B10BDA /* MoviesRequestDTO+Mapping.swift in Sources */,
+				E486FA53272FC52800B10BDA /* MoviesResponseDTO+Mapping.swift in Sources */,
+				E486FA58272FCB5800B10BDA /* APIEndpoints.swift in Sources */,
+				E486FA4B272FBB6300B10BDA /* APIClient.swift in Sources */,
+				E486FA43272FB66000B10BDA /* NetworkConfig.swift in Sources */,
+				E486FA3F272F064200B10BDA /* AppConfigurations.swift in Sources */,
 				E486FA09272EF5A500B10BDA /* AppDelegate.swift in Sources */,
+				E486FA49272FBAE600B10BDA /* NetworkService.swift in Sources */,
+				E486FA4D272FC08400B10BDA /* Movie.swift in Sources */,
+				E486FA47272FB7DA00B10BDA /* Endpoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +590,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				API_BASE_URL = "https://openapi.naver.com";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -527,6 +620,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CLIENT_ID = jWEfQEDXvNJM5wAlsBeM;
+				CLIENT_SECRET = U0HQtFHzuz;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -559,6 +654,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				API_BASE_URL = "https://openapi.naver.com";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -588,6 +684,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CLIENT_ID = jWEfQEDXvNJM5wAlsBeM;
+				CLIENT_SECRET = U0HQtFHzuz;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
