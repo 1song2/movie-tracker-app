@@ -32,9 +32,19 @@ class MoviesSearchViewController: UIViewController, StoryboardInstantiable {
             let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
             cell.textLabel?.text = name
             cell.detailTextLabel?.text = "개봉일자, 평점"
-            cell.accessoryType = .checkmark
+            cell.selectionStyle = .none
             return cell
         }.disposed(by: disposeBag)
+        
+        tableView.rx.itemSelected
+            .subscribe(onNext: { [weak self] in
+                self?.tableView.cellForRow(at: $0)?.accessoryType = .checkmark
+            }).disposed(by: disposeBag)
+        
+        tableView.rx.itemDeselected
+            .subscribe(onNext: { [weak self] in
+                self?.tableView.cellForRow(at: $0)?.accessoryType = .none
+            }).disposed(by: disposeBag)
         
         nextButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
