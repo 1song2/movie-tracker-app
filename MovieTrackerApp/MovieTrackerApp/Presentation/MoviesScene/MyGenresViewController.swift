@@ -9,11 +9,11 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class MoviesViewController: UIViewController {
+class MyGenresViewController: UITableViewController {
     private let disposeBag = DisposeBag()
     
-    static func create() -> MoviesViewController {
-        return MoviesViewController()
+    static func create() -> MyGenresViewController {
+        return MyGenresViewController()
     }
     
     override func viewDidLoad() {
@@ -34,5 +34,12 @@ class MoviesViewController: UIViewController {
             cell.textLabel?.text = item
             cell.accessoryType = .disclosureIndicator
         }.disposed(by: disposeBag)
+        
+        tableView.rx.itemSelected
+            .subscribe(onNext: { [weak self] in
+                let viewController = WatchedMoviesViewController.create()
+                viewController.title = genre[$0.row]
+                self?.navigationController?.pushViewController(viewController, animated: true)
+            }).disposed(by: disposeBag)
     }
 }

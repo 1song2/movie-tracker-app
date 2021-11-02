@@ -7,24 +7,24 @@
 
 import UIKit
 
-protocol MoviesSearchFlowCoordinatorDependencies {
-    func makeMoviesViewController() -> MoviesViewController
+protocol WatchedMoviesFlowCoordinatorDependencies {
+    func makeMyGenresViewController() -> MyGenresViewController
 }
 
-final class MoviesSearchFlowCoordinator {
+final class WatchedMoviesFlowCoordinator {
     private weak var tabBarController: UITabBarController?
-    private let dependencies: MoviesSearchFlowCoordinatorDependencies
+    private let dependencies: WatchedMoviesFlowCoordinatorDependencies
     
-    private weak var moviesVC: MoviesViewController?
+    private weak var myGenresVC: MyGenresViewController?
     
     init(tabBarController: UITabBarController,
-         dependencies: MoviesSearchFlowCoordinatorDependencies) {
+         dependencies: WatchedMoviesFlowCoordinatorDependencies) {
         self.tabBarController = tabBarController
         self.dependencies = dependencies
     }
     
     func start() {
-        let viewController = dependencies.makeMoviesViewController()
+        let viewController = dependencies.makeMyGenresViewController()
         if #available(iOS 13, *) {
             tabBarController?.view.backgroundColor = .systemBackground
         } else {
@@ -34,7 +34,7 @@ final class MoviesSearchFlowCoordinator {
             createNavigationController(for: viewController, title: "기록", image: UIImage(named: "list")),
             createNavigationController(for: UIViewController(), title: "설정", image: UIImage(named: "setting"))
         ]
-        moviesVC = viewController
+        myGenresVC = viewController
     }
     
     private func createNavigationController(for rootVC: UIViewController,

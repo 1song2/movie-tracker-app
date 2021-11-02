@@ -18,8 +18,8 @@ final class AppFlowCoordinator {
     }
 
     func start() {
-        let moviesSceneDIContainer = appDIContainer.makeMoviesSceneDIContainer()
-        let flow = moviesSceneDIContainer.makeMoviesSearchFlowCoordinator(tabBarController: tabBarController)
+        let watchedMoviesSceneDIContainer = appDIContainer.makeWatchedMoviesSceneDIContainer()
+        let flow = watchedMoviesSceneDIContainer.makeWatchedMoviesFlowCoordinator(tabBarController: tabBarController)
         flow.start()
     }
 }
