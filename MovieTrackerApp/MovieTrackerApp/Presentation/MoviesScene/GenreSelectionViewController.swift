@@ -18,6 +18,7 @@ class GenreSelectionViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.largeTitleDisplayMode = .never
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
         let genres = [
@@ -33,8 +34,11 @@ class GenreSelectionViewController: UITableViewController {
         }.disposed(by: disposeBag)
         
         tableView.rx.itemSelected
-            .subscribe(onNext: { _ in
-                // Go to movie search page
+            .subscribe(onNext: { [weak self] in
+                let viewController = MoviesSearchViewController.create()
+                viewController.title = "영화 이름이 무엇인가요?" // viewModel.screenTitle
+                viewController.navigationItem.prompt = genres[$0.row]
+                self?.navigationController?.pushViewController(viewController, animated: true)
             }).disposed(by: disposeBag)
     }
 }
