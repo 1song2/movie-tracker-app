@@ -14,6 +14,7 @@
 		E42865D22730F0BF00B4E594 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42865D12730F0BF00B4E594 /* ContainerView.swift */; };
 		E42865D82730F2D800B4E594 /* SortingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42865D72730F2D800B4E594 /* SortingView.swift */; };
 		E42865DA2730F2E000B4E594 /* SortingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E42865D92730F2E000B4E594 /* SortingView.xib */; };
+		E42865DF2731105100B4E594 /* GenreSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42865DE2731105100B4E594 /* GenreSelectionViewController.swift */; };
 		E486FA09272EF5A500B10BDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA08272EF5A500B10BDA /* AppDelegate.swift */; };
 		E486FA0D272EF5A500B10BDA /* MyGenresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA0C272EF5A500B10BDA /* MyGenresViewController.swift */; };
 		E486FA12272EF5A800B10BDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E486FA11272EF5A800B10BDA /* Assets.xcassets */; };
@@ -67,6 +68,7 @@
 		E42865D12730F0BF00B4E594 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		E42865D72730F2D800B4E594 /* SortingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingView.swift; sourceTree = "<group>"; };
 		E42865D92730F2E000B4E594 /* SortingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortingView.xib; sourceTree = "<group>"; };
+		E42865DE2731105100B4E594 /* GenreSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreSelectionViewController.swift; sourceTree = "<group>"; };
 		E486FA05272EF5A500B10BDA /* MovieTrackerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieTrackerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E486FA08272EF5A500B10BDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E486FA0C272EF5A500B10BDA /* MyGenresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGenresViewController.swift; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 				E42865DB27310E2200B4E594 /* Flows */,
 				E486FA0C272EF5A500B10BDA /* MyGenresViewController.swift */,
 				E42865DC27310E7100B4E594 /* Watchlist */,
+				E42865DE2731105100B4E594 /* GenreSelectionViewController.swift */,
 				E42865CB2730DDA600B4E594 /* ModalViewController.swift */,
 				E42865D12730F0BF00B4E594 /* ContainerView.swift */,
 			);
@@ -616,6 +619,7 @@
 				E486FA5D272FD52800B10BDA /* WatchedMoviesSceneDIContainer.swift in Sources */,
 				E486FA0D272EF5A500B10BDA /* MyGenresViewController.swift in Sources */,
 				E486FA53272FC52800B10BDA /* MoviesResponseDTO+Mapping.swift in Sources */,
+				E42865DF2731105100B4E594 /* GenreSelectionViewController.swift in Sources */,
 				E486FA4B272FBB6300B10BDA /* APIClient.swift in Sources */,
 				E486FA43272FB66000B10BDA /* NetworkConfig.swift in Sources */,
 				E42865D82730F2D800B4E594 /* SortingView.swift in Sources */,
