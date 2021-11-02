@@ -148,6 +148,33 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E42865DB27310E2200B4E594 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				E486FA5F272FD7C400B10BDA /* WatchedMoviesFlowCoordinator.swift */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		E42865DC27310E7100B4E594 /* Watchlist */ = {
+			isa = PBXGroup;
+			children = (
+				E4BB8FBB2730516B00657DBA /* WatchedMoviesViewController.swift */,
+				E4BB8FBD27305BF300657DBA /* WatchedMoviesViewController.storyboard */,
+				E42865DD27310EE400B4E594 /* SortingView */,
+			);
+			path = Watchlist;
+			sourceTree = "<group>";
+		};
+		E42865DD27310EE400B4E594 /* SortingView */ = {
+			isa = PBXGroup;
+			children = (
+				E42865D72730F2D800B4E594 /* SortingView.swift */,
+				E42865D92730F2E000B4E594 /* SortingView.xib */,
+			);
+			path = SortingView;
+			sourceTree = "<group>";
+		};
 		E486F9FC272EF5A500B10BDA = {
 			isa = PBXGroup;
 			children = (
@@ -302,14 +329,11 @@
 		E486FA5E272FD79900B10BDA /* MoviesScene */ = {
 			isa = PBXGroup;
 			children = (
-				E486FA5F272FD7C400B10BDA /* WatchedMoviesFlowCoordinator.swift */,
+				E42865DB27310E2200B4E594 /* Flows */,
 				E486FA0C272EF5A500B10BDA /* MyGenresViewController.swift */,
-				E4BB8FBB2730516B00657DBA /* WatchedMoviesViewController.swift */,
-				E4BB8FBD27305BF300657DBA /* WatchedMoviesViewController.storyboard */,
+				E42865DC27310E7100B4E594 /* Watchlist */,
 				E42865CB2730DDA600B4E594 /* ModalViewController.swift */,
 				E42865D12730F0BF00B4E594 /* ContainerView.swift */,
-				E42865D72730F2D800B4E594 /* SortingView.swift */,
-				E42865D92730F2E000B4E594 /* SortingView.xib */,
 			);
 			path = MoviesScene;
 			sourceTree = "<group>";
