@@ -31,15 +31,17 @@ class MoviesSearchViewController: UIViewController, StoryboardInstantiable {
         Observable.just(results).bind(to: self.tableView.rx.items) { _, _, name in
             let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
             cell.textLabel?.text = name
-            // cell.imageView?.image = UIImage(named: "heart-fill")
             cell.detailTextLabel?.text = "개봉일자, 평점"
             cell.accessoryType = .checkmark
             return cell
         }.disposed(by: disposeBag)
         
         nextButton.rx.tap
-            .subscribe(onNext: { _ in
-                // Go to review writing page
+            .subscribe(onNext: { [weak self] _ in
+                let viewController = ReviewWritingViewController.create()
+                viewController.title = "감상을 기록해주세요" // viewModel.screenTitle
+                // viewController.navigationItem.prompt = 영화 제목
+                self?.navigationController?.pushViewController(viewController, animated: true)
             }).disposed(by: disposeBag)
     }
     
