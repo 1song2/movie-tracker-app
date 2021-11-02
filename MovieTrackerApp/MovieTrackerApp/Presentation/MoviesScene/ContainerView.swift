@@ -10,21 +10,21 @@ import UIKit
 class ContainerView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureView()
+        setupView()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        configureView()
+        setupView()
     }
     
-    private func configureView() {
+    private func setupView() {
         if #available(iOS 13, *) {
             self.backgroundColor = .systemBackground
         } else {
             self.backgroundColor = .white
         }
-        self.layer.cornerRadius = 16
+        self.layer.cornerRadius = 16.0
         self.clipsToBounds = true
     }
 }

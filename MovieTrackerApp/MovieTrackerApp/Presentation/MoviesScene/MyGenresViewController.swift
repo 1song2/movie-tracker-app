@@ -20,8 +20,11 @@ class MyGenresViewController: UITableViewController {
         title = "나의 영화 노트" // viewModel.screenTitle
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
         navigationItem.rightBarButtonItem?.rx.tap
-            .subscribe(onNext: {
-                print("button tapped")
+            .subscribe(onNext: { [weak self] in
+                let viewController = GenreSelectionViewController.create()
+                viewController.title = "카테고리가 무엇인가요?" // viewModel.screenTitle
+                viewController.hidesBottomBarWhenPushed = true
+                self?.navigationController?.pushViewController(viewController, animated: true)
             }).disposed(by: disposeBag)
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -38,6 +41,7 @@ class MyGenresViewController: UITableViewController {
             .subscribe(onNext: { [weak self] in
                 let viewController = WatchedMoviesViewController.create()
                 viewController.title = genre[$0.row]
+                viewController.hidesBottomBarWhenPushed = true
                 self?.navigationController?.pushViewController(viewController, animated: true)
             }).disposed(by: disposeBag)
     }
