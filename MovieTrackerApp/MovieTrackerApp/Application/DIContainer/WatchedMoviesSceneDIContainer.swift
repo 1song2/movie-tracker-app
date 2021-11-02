@@ -18,9 +18,13 @@ final class WatchedMoviesSceneDIContainer {
         self.dependencies = dependencies
     }
     
-    // MARK: - My Genres
-    func makeMyGenresViewController() -> MyGenresViewController {
-        return MyGenresViewController.create()
+    // MARK: - Landing Page
+    func makeLandingPageViewController(actions: LandingPageViewModelActions) -> LandingPageViewController {
+        return LandingPageViewController.create(with: makeLandingPageViewModel(actions: actions))
+    }
+    
+    func makeLandingPageViewModel(actions: LandingPageViewModelActions) -> LandingPageViewModel {
+        return DefaultLandingPageViewModel(actions: actions)
     }
     
     // MARK: - Flow Coordinators

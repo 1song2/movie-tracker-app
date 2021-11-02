@@ -8,14 +8,16 @@
 import UIKit
 
 protocol WatchedMoviesFlowCoordinatorDependencies {
-    func makeMyGenresViewController() -> MyGenresViewController
+    func makeLandingPageViewController(actions: LandingPageViewModelActions) -> LandingPageViewController
 }
 
 final class WatchedMoviesFlowCoordinator {
     private weak var tabBarController: UITabBarController?
     private let dependencies: WatchedMoviesFlowCoordinatorDependencies
     
-    private weak var myGenresVC: MyGenresViewController?
+    private weak var landingPageVC: LandingPageViewController?
+    private weak var watchListNavigationVC: UINavigationController?
+    private weak var settingsNavigationVC: UINavigationController?
     
     init(tabBarController: UITabBarController,
          dependencies: WatchedMoviesFlowCoordinatorDependencies) {
@@ -24,22 +26,35 @@ final class WatchedMoviesFlowCoordinator {
     }
     
     func start() {
-        let viewController = dependencies.makeMyGenresViewController()
-        if #available(iOS 13, *) {
-            tabBarController?.view.backgroundColor = .systemBackground
-        } else {
-            tabBarController?.view.backgroundColor = .white
-        }
+        let actions = LandingPageViewModelActions(showGenreSelection: showGenreSelection,
+                                                  showWatchlist: showWatchlist)
+        let viewController = dependencies.makeLandingPageViewController(actions: actions)
+        watchListNavigationVC = createNavigationController(for: viewController,
+                                                              title: "기록",
+                                                              image: UIImage(named: "list"))
         tabBarController?.viewControllers = [
-            createNavigationController(for: viewController, title: "기록", image: UIImage(named: "list")),
+            watchListNavigationVC ?? UIViewController(),
             createNavigationController(for: UIViewController(), title: "설정", image: UIImage(named: "setting"))
         ]
-        myGenresVC = viewController
+        landingPageVC = viewController
+    }
+    
+    private func showGenreSelection() {
+        let viewController = GenreSelectionViewController.create()
+        viewController.hidesBottomBarWhenPushed = true
+        watchListNavigationVC?.pushViewController(viewController, animated: true)
+    }
+    
+    private func showWatchlist(genre: Genre) {
+        let viewController = WatchedMoviesViewController.create()
+        // viewController.title = genre[$0.row]
+        viewController.hidesBottomBarWhenPushed = true
+        watchListNavigationVC?.pushViewController(viewController, animated: true)
     }
     
     private func createNavigationController(for rootVC: UIViewController,
                                             title: String,
-                                            image: UIImage?) -> UIViewController {
+                                            image: UIImage?) -> UINavigationController {
         let navigationController = UINavigationController(rootViewController: rootVC)
         navigationController.tabBarItem.title = title
         navigationController.tabBarItem.image = image
