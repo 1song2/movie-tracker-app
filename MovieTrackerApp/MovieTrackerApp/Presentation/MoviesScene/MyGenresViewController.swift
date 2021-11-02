@@ -24,5 +24,15 @@ class MoviesViewController: UIViewController {
             .subscribe(onNext: {
                 print("button tapped")
             }).disposed(by: disposeBag)
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        
+        let genre = ["스릴러", "액션", "로맨스"]
+        tableView.dataSource = nil
+        Observable.just(genre).bind(to: self.tableView.rx.items(cellIdentifier: "Cell",
+                                                                cellType: UITableViewCell.self)) { _, item, cell in
+            cell.textLabel?.text = item
+            cell.accessoryType = .disclosureIndicator
+        }.disposed(by: disposeBag)
     }
 }
