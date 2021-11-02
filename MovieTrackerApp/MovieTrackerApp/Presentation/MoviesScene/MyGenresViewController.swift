@@ -23,6 +23,7 @@ class MyGenresViewController: UITableViewController {
             .subscribe(onNext: { [weak self] in
                 let viewController = GenreSelectionViewController.create()
                 viewController.title = "카테고리가 무엇인가요?" // viewModel.screenTitle
+                viewController.hidesBottomBarWhenPushed = true
                 self?.navigationController?.pushViewController(viewController, animated: true)
             }).disposed(by: disposeBag)
         
@@ -40,6 +41,7 @@ class MyGenresViewController: UITableViewController {
             .subscribe(onNext: { [weak self] in
                 let viewController = WatchedMoviesViewController.create()
                 viewController.title = genre[$0.row]
+                viewController.hidesBottomBarWhenPushed = true
                 self?.navigationController?.pushViewController(viewController, animated: true)
             }).disposed(by: disposeBag)
     }
