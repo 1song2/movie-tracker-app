@@ -8,23 +8,23 @@
 import UIKit
 import RxSwift
 
-class MyGenresViewController: UITableViewController {
+class LandingPageViewController: UITableViewController {
+    private var viewModel: LandingPageViewModel!
     private let disposeBag = DisposeBag()
     
-    static func create() -> MyGenresViewController {
-        return MyGenresViewController()
+    static func create(with viewModel: LandingPageViewModel) -> LandingPageViewController {
+        let view = LandingPageViewController()
+        view.viewModel = viewModel
+        return view
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "나의 영화 노트" // viewModel.screenTitle
+        title = viewModel.screenTitle
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
         navigationItem.rightBarButtonItem?.rx.tap
             .subscribe(onNext: { [weak self] in
-                let viewController = GenreSelectionViewController.create()
-                viewController.title = "카테고리가 무엇인가요?" // viewModel.screenTitle
-                viewController.hidesBottomBarWhenPushed = true
-                self?.navigationController?.pushViewController(viewController, animated: true)
+                self?.viewModel.didAddNewData()
             }).disposed(by: disposeBag)
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -39,10 +39,7 @@ class MyGenresViewController: UITableViewController {
         
         tableView.rx.itemSelected
             .subscribe(onNext: { [weak self] in
-                let viewController = WatchedMoviesViewController.create()
-                viewController.title = genre[$0.row]
-                viewController.hidesBottomBarWhenPushed = true
-                self?.navigationController?.pushViewController(viewController, animated: true)
+                self?.viewModel.didSelectGenre(at: $0.row)
             }).disposed(by: disposeBag)
     }
 }

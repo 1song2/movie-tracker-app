@@ -19,8 +19,11 @@
 		E42865E527311AA200B4E594 /* MoviesSearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E42865E427311AA200B4E594 /* MoviesSearchViewController.storyboard */; };
 		E42865E82731235200B4E594 /* ReviewWritingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E42865E72731235200B4E594 /* ReviewWritingViewController.storyboard */; };
 		E42865EA2731237000B4E594 /* ReviewWritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42865E92731237000B4E594 /* ReviewWritingViewController.swift */; };
+		E42865F227316C5B00B4E594 /* LandingPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42865F127316C5B00B4E594 /* LandingPageViewModel.swift */; };
+		E42865F4273182E000B4E594 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42865F3273182E000B4E594 /* Genre.swift */; };
+		E42865F62731830E00B4E594 /* GenreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42865F52731830E00B4E594 /* GenreViewModel.swift */; };
 		E486FA09272EF5A500B10BDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA08272EF5A500B10BDA /* AppDelegate.swift */; };
-		E486FA0D272EF5A500B10BDA /* MyGenresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA0C272EF5A500B10BDA /* MyGenresViewController.swift */; };
+		E486FA0D272EF5A500B10BDA /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA0C272EF5A500B10BDA /* LandingPageViewController.swift */; };
 		E486FA12272EF5A800B10BDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E486FA11272EF5A800B10BDA /* Assets.xcassets */; };
 		E486FA15272EF5A800B10BDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E486FA13272EF5A800B10BDA /* LaunchScreen.storyboard */; };
 		E486FA20272EF5A900B10BDA /* MovieTrackerAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA1F272EF5A900B10BDA /* MovieTrackerAppTests.swift */; };
@@ -77,9 +80,12 @@
 		E42865E427311AA200B4E594 /* MoviesSearchViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoviesSearchViewController.storyboard; sourceTree = "<group>"; };
 		E42865E72731235200B4E594 /* ReviewWritingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewWritingViewController.storyboard; sourceTree = "<group>"; };
 		E42865E92731237000B4E594 /* ReviewWritingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWritingViewController.swift; sourceTree = "<group>"; };
+		E42865F127316C5B00B4E594 /* LandingPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewModel.swift; sourceTree = "<group>"; };
+		E42865F3273182E000B4E594 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		E42865F52731830E00B4E594 /* GenreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreViewModel.swift; sourceTree = "<group>"; };
 		E486FA05272EF5A500B10BDA /* MovieTrackerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieTrackerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E486FA08272EF5A500B10BDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E486FA0C272EF5A500B10BDA /* MyGenresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGenresViewController.swift; sourceTree = "<group>"; };
+		E486FA0C272EF5A500B10BDA /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
 		E486FA11272EF5A800B10BDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E486FA14272EF5A800B10BDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E486FA16272EF5A800B10BDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -203,6 +209,16 @@
 			path = ReviewWriting;
 			sourceTree = "<group>";
 		};
+		E42865F027316C2D00B4E594 /* LandingPage */ = {
+			isa = PBXGroup;
+			children = (
+				E486FA0C272EF5A500B10BDA /* LandingPageViewController.swift */,
+				E42865F127316C5B00B4E594 /* LandingPageViewModel.swift */,
+				E42865F52731830E00B4E594 /* GenreViewModel.swift */,
+			);
+			path = LandingPage;
+			sourceTree = "<group>";
+		};
 		E486F9FC272EF5A500B10BDA = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				E486FA4C272FC08400B10BDA /* Movie.swift */,
+				E42865F3273182E000B4E594 /* Genre.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -358,7 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				E42865DB27310E2200B4E594 /* Flows */,
-				E486FA0C272EF5A500B10BDA /* MyGenresViewController.swift */,
+				E42865F027316C2D00B4E594 /* LandingPage */,
 				E42865DC27310E7100B4E594 /* Watchlist */,
 				E42865DE2731105100B4E594 /* GenreSelectionViewController.swift */,
 				E42865E627311C2000B4E594 /* MoviesSearch */,
@@ -647,8 +664,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E486FA5D272FD52800B10BDA /* WatchedMoviesSceneDIContainer.swift in Sources */,
-				E486FA0D272EF5A500B10BDA /* MyGenresViewController.swift in Sources */,
+				E486FA0D272EF5A500B10BDA /* LandingPageViewController.swift in Sources */,
+				E42865F4273182E000B4E594 /* Genre.swift in Sources */,
 				E486FA53272FC52800B10BDA /* MoviesResponseDTO+Mapping.swift in Sources */,
+				E42865F62731830E00B4E594 /* GenreViewModel.swift in Sources */,
 				E42865EA2731237000B4E594 /* ReviewWritingViewController.swift in Sources */,
 				E42865DF2731105100B4E594 /* GenreSelectionViewController.swift in Sources */,
 				E486FA4B272FBB6300B10BDA /* APIClient.swift in Sources */,
@@ -667,6 +686,7 @@
 				E486FA60272FD7C400B10BDA /* WatchedMoviesFlowCoordinator.swift in Sources */,
 				E42865E22731159D00B4E594 /* MoviesSearchViewController.swift in Sources */,
 				E486FA4D272FC08400B10BDA /* Movie.swift in Sources */,
+				E42865F227316C5B00B4E594 /* LandingPageViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
