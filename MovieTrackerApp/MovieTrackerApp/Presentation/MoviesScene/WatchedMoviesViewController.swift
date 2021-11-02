@@ -11,7 +11,7 @@ import RxCocoa
 
 class WatchedMoviesViewController: UIViewController, StoryboardInstantiable {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var filterButton: UIButton!
+    @IBOutlet weak var sortingButton: UIButton!
     
     private let disposeBag = DisposeBag()
     
@@ -35,5 +35,12 @@ class WatchedMoviesViewController: UIViewController, StoryboardInstantiable {
             cell.accessoryType = .disclosureIndicator
             return cell
         }.disposed(by: disposeBag)
+        
+        sortingButton.rx.tap
+            .subscribe(onNext: {
+                let viewController = ModalViewController()
+                viewController.modalPresentationStyle = .overCurrentContext
+                self.present(viewController, animated: false)
+            }).disposed(by: disposeBag)
     }
 }
