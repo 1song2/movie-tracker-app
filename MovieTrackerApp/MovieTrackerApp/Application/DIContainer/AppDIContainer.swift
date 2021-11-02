@@ -20,8 +20,8 @@ final class AppDIContainer {
     }()
     
     // MARK: - DIContainers of scenes
-    func makeMoviesSceneDIContainer() -> MoviesSceneDIContainer {
-        let dependencies = MoviesSceneDIContainer.Dependencies(apiClient: apiClient)
-        return MoviesSceneDIContainer(dependencies: dependencies)
+    func makeWatchedMoviesSceneDIContainer() -> WatchedMoviesSceneDIContainer {
+        let dependencies = WatchedMoviesSceneDIContainer.Dependencies(apiClient: apiClient)
+        return WatchedMoviesSceneDIContainer(dependencies: dependencies)
     }
 }

@@ -16,10 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let navigationController = UINavigationController()
+        let tabBarController = UITabBarController()
         
-        window?.rootViewController = navigationController
-        appFlowCoordinator = AppFlowCoordinator(navigationController: navigationController,
+        window?.rootViewController = tabBarController
+        appFlowCoordinator = AppFlowCoordinator(tabBarController: tabBarController,
                                                 appDIContainer: appDIContainer)
         appFlowCoordinator?.start()
         window?.makeKeyAndVisible()
