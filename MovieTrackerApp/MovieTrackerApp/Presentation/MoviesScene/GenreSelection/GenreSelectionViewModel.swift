@@ -40,7 +40,7 @@ final class DefaultGenreSelectionViewModel: GenreSelectionViewModel {
         "실험", "영화카툰",
         "영화음악", "영화패러디포스터"
     ]
-    private var genres: [Genre] = []
+    private var genres: [Genre] = [Genre(code: nil, name: "전체")]
     
     // MARK: - OUTPUT
     
@@ -51,8 +51,8 @@ final class DefaultGenreSelectionViewModel: GenreSelectionViewModel {
     
     init(actions: GenreSelectionViewModelActions? = nil) {
         self.actions = actions
-        self.genres = genreNames.enumerated().map {
-            Genre(code: ($0 + 1).description, name: $1)
+        self.genres += genreNames.enumerated().map {
+            Genre(code: "\($0 + 1)", name: $1)
         }
         items = genres.map(GenreViewModel.init)
     }
