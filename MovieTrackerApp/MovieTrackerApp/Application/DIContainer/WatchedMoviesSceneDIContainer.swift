@@ -47,6 +47,17 @@ final class WatchedMoviesSceneDIContainer {
         return DefaultMoviesSearchViewModel(genre: genre, apiClient: dependencies.apiClient, actions: actions)
     }
     
+    // MARK: - Review Writing
+    func makeReviewWritingViewController(movie: Movie,
+                                         actions: ReviewWritingViewModelActions) -> ReviewWritingViewController {
+        return ReviewWritingViewController.create(with: makeReviewWritingViewModel(movie: movie, actions: actions))
+    }
+    
+    func makeReviewWritingViewModel(movie: Movie,
+                                    actions: ReviewWritingViewModelActions) -> ReviewWritingViewModel {
+        return DefaultReviewWritingViewModel(movie: movie, actions: actions)
+    }
+    
     // MARK: - Flow Coordinators
     func makeWatchedMoviesFlowCoordinator(tabBarController: UITabBarController) -> WatchedMoviesFlowCoordinator {
         return WatchedMoviesFlowCoordinator(tabBarController: tabBarController,

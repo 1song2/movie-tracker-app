@@ -12,6 +12,8 @@ protocol WatchedMoviesFlowCoordinatorDependencies {
     func makeGenreSelectionViewController(actions: GenreSelectionViewModelActions) -> GenreSelectionViewController
     func makeMoviesSearchViewController(genre: Genre,
                                         actions: MoviesSearchViewModelActions) -> MoviesSearchViewController
+    func makeReviewWritingViewController(movie: Movie,
+                                         actions: ReviewWritingViewModelActions) -> ReviewWritingViewController
 }
 
 final class WatchedMoviesFlowCoordinator {
@@ -22,6 +24,8 @@ final class WatchedMoviesFlowCoordinator {
     private weak var watchListNavigationVC: UINavigationController?
     private weak var settingsNavigationVC: UINavigationController?
     private weak var genreSelectionVC: GenreSelectionViewController?
+    private weak var moviesSearchViewController: MoviesSearchViewController?
+    private weak var reviewWritingViewController: ReviewWritingViewController?
     
     init(tabBarController: UITabBarController,
          dependencies: WatchedMoviesFlowCoordinatorDependencies) {
@@ -55,6 +59,7 @@ final class WatchedMoviesFlowCoordinator {
         let actions = MoviesSearchViewModelActions(showReviewWriting: showReviewWriting)
         let viewController = dependencies.makeMoviesSearchViewController(genre: genre, actions: actions)
         genreSelectionVC?.navigationController?.pushViewController(viewController, animated: true)
+        moviesSearchViewController = viewController
     }
     
     private func showWatchlist(genre: Genre) {
@@ -65,9 +70,15 @@ final class WatchedMoviesFlowCoordinator {
     }
     
     private func showReviewWriting(movie: Movie) {
-        let viewController = ReviewWritingViewController.create()
-        viewController.navigationItem.prompt = movie.title
-        print(movie.title ?? "couldn't get movie name")
+        let actions = ReviewWritingViewModelActions(addDataToWatchedHistory: addDataToWatchedHistory)
+        let viewController = dependencies.makeReviewWritingViewController(movie: movie, actions: actions)
+        moviesSearchViewController?.navigationController?.pushViewController(viewController, animated: true)
+        reviewWritingViewController = viewController
+    }
+    
+    private func addDataToWatchedHistory(data: WatchedMovieData) {
+        reviewWritingViewController?.navigationController?.popToRootViewController(animated: true)
+        // Realm
     }
     
     private func createNavigationController(for rootVC: UIViewController,

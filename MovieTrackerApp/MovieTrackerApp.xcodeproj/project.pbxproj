@@ -27,6 +27,7 @@
 		E452C8202732446600481E7A /* MoviesSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E452C81F2732446600481E7A /* MoviesSearchViewModel.swift */; };
 		E452C8222732449000481E7A /* MovieItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E452C8212732449000481E7A /* MovieItemViewModel.swift */; };
 		E452C8242732452000481E7A /* MovieQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = E452C8232732452000481E7A /* MovieQuery.swift */; };
+		E452C8262732757300481E7A /* ReviewWritingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E452C8252732757300481E7A /* ReviewWritingViewModel.swift */; };
 		E486FA09272EF5A500B10BDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA08272EF5A500B10BDA /* AppDelegate.swift */; };
 		E486FA0D272EF5A500B10BDA /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA0C272EF5A500B10BDA /* LandingPageViewController.swift */; };
 		E486FA12272EF5A800B10BDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E486FA11272EF5A800B10BDA /* Assets.xcassets */; };
@@ -93,6 +94,7 @@
 		E452C81F2732446600481E7A /* MoviesSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesSearchViewModel.swift; sourceTree = "<group>"; };
 		E452C8212732449000481E7A /* MovieItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieItemViewModel.swift; sourceTree = "<group>"; };
 		E452C8232732452000481E7A /* MovieQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuery.swift; sourceTree = "<group>"; };
+		E452C8252732757300481E7A /* ReviewWritingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWritingViewModel.swift; sourceTree = "<group>"; };
 		E486FA05272EF5A500B10BDA /* MovieTrackerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieTrackerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E486FA08272EF5A500B10BDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E486FA0C272EF5A500B10BDA /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				E42865E92731237000B4E594 /* ReviewWritingViewController.swift */,
+				E452C8252732757300481E7A /* ReviewWritingViewModel.swift */,
 				E42865E72731235200B4E594 /* ReviewWritingViewController.storyboard */,
 			);
 			path = ReviewWriting;
@@ -721,6 +724,7 @@
 				E486FA49272FBAE600B10BDA /* NetworkService.swift in Sources */,
 				E486FA60272FD7C400B10BDA /* WatchedMoviesFlowCoordinator.swift in Sources */,
 				E42865E22731159D00B4E594 /* MoviesSearchViewController.swift in Sources */,
+				E452C8262732757300481E7A /* ReviewWritingViewModel.swift in Sources */,
 				E486FA4D272FC08400B10BDA /* Movie.swift in Sources */,
 				E42865F227316C5B00B4E594 /* LandingPageViewModel.swift in Sources */,
 			);
