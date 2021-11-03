@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 enum Router: URLRequestConvertible {
-    case getMovies(query: String)
+    case getMovies(query: MovieQuery)
     
     var baseURL: URL {
         lazy var appConfiguration = AppConfiguration()
@@ -42,7 +42,12 @@ enum Router: URLRequestConvertible {
         
         switch self {
         case let .getMovies(query):
-            request = try URLEncodedFormParameterEncoder().encode(["query": query], into: request)
+            if let genre = query.genre {
+                request = try URLEncodedFormParameterEncoder().encode(["query": query.query, "genre": genre],
+                                                                      into: request)
+            } else {
+                request = try URLEncodedFormParameterEncoder().encode(["query": query.query], into: request)
+            }
         }
         
         return request
