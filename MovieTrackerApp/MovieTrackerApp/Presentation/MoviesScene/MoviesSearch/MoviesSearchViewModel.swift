@@ -54,7 +54,7 @@ final class DefaultMoviesSearchViewModel: MoviesSearchViewModel {
     init(genre: Genre,
          apiClient: APIClient,
          actions: MoviesSearchViewModelActions? = nil) {
-        self.promptTitle = genre.name
+        self.promptTitle = "장르: \(genre.name)"
         self.genreCode = genre.code
         self.actions = actions
         self.apiClient = apiClient
