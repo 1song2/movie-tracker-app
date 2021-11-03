@@ -9,13 +9,16 @@ import UIKit
 import RxSwift
 
 class ReviewWritingViewController: UIViewController, StoryboardInstantiable {
+    @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var doneButton: UIButton!
     
+    private var viewModel: ReviewWritingViewModel!
     private let disposeBag = DisposeBag()
     
-    static func create() -> ReviewWritingViewController {
+    static func create(with viewModel: ReviewWritingViewModel) -> ReviewWritingViewController {
         let view = ReviewWritingViewController.instantiateViewController()
+        view.viewModel = viewModel
         return view
     }
     
@@ -31,11 +34,12 @@ class ReviewWritingViewController: UIViewController, StoryboardInstantiable {
         
         doneButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.navigationController?.popToRootViewController(animated: true)
+                self?.viewModel.didTapDoneButton(watchedOn: self?.datePicker.date, notes: self?.textView.text)
             }).disposed(by: disposeBag)
     }
     
     private func setupView() {
+        title = viewModel.screenTitle
         doneButton.layer.cornerRadius = 15.0
         doneButton.clipsToBounds = true
         textView.layer.cornerRadius = 16.0

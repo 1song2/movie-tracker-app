@@ -12,11 +12,13 @@ class MoviesSearchViewController: UIViewController, StoryboardInstantiable {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nextButton: UIButton!
     
+    private var viewModel: MoviesSearchViewModel!
     private let disposeBag = DisposeBag()
     private var searchController = UISearchController(searchResultsController: nil)
     
-    static func create() -> MoviesSearchViewController {
+    static func create(with viewModel: MoviesSearchViewModel) -> MoviesSearchViewController {
         let view = MoviesSearchViewController.instantiateViewController()
+        view.viewModel = viewModel
         return view
     }
     
@@ -25,19 +27,20 @@ class MoviesSearchViewController: UIViewController, StoryboardInstantiable {
         setupView()
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        
-        let results = ["영화제목", "영화제목", "영화제목"]
         tableView.dataSource = nil
-        Observable.just(results).bind(to: self.tableView.rx.items) { _, _, name in
-            let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
-            cell.textLabel?.text = name
-            cell.detailTextLabel?.text = "개봉일자, 평점"
-            cell.selectionStyle = .none
-            return cell
-        }.disposed(by: disposeBag)
+        
+        viewModel.items
+            .bind(to: self.tableView.rx.items) { _, _, item in
+                let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
+                cell.textLabel?.text = item.title
+                cell.detailTextLabel?.text = item.description
+                cell.selectionStyle = .none
+                return cell
+            }.disposed(by: disposeBag)
         
         tableView.rx.itemSelected
             .subscribe(onNext: { [weak self] in
+                self?.viewModel.didSelectItem(at: $0.row)
                 self?.tableView.cellForRow(at: $0)?.accessoryType = .checkmark
             }).disposed(by: disposeBag)
         
@@ -46,16 +49,20 @@ class MoviesSearchViewController: UIViewController, StoryboardInstantiable {
                 self?.tableView.cellForRow(at: $0)?.accessoryType = .none
             }).disposed(by: disposeBag)
         
+        viewModel.selectedItem
+            .map { $0 != nil }
+            .bind(to: nextButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
         nextButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
-                let viewController = ReviewWritingViewController.create()
-                viewController.title = "감상을 기록해주세요" // viewModel.screenTitle
-                // viewController.navigationItem.prompt = 영화 제목
-                self?.navigationController?.pushViewController(viewController, animated: true)
+                self?.viewModel.didTapNextButton()
             }).disposed(by: disposeBag)
     }
     
     private func setupView() {
+        title = viewModel.screenTitle
+        navigationItem.prompt = viewModel.promptTitle
         nextButton.layer.cornerRadius = 15.0
         nextButton.clipsToBounds = true
         setupSearchController()
@@ -75,10 +82,10 @@ extension MoviesSearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text, !searchText.isEmpty else { return }
         searchController.isActive = false
-        // viewModel.didSearch(query: searchText)
+        viewModel.didSearch(query: searchText)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        // viewModel.didCancelSearch()
+        viewModel.didCancelSearch()
     }
 }

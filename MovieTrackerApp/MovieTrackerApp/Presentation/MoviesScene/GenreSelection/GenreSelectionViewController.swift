@@ -1,32 +1,28 @@
 //
-//  ViewController.swift
+//  GenreSelectionViewController.swift
 //  MovieTrackerApp
 //
-//  Created by Song on 2021/11/01.
+//  Created by Song on 2021/11/02.
 //
 
 import UIKit
 import RxSwift
 
-class LandingPageViewController: UITableViewController {
-    private var viewModel: LandingPageViewModel!
+class GenreSelectionViewController: UITableViewController {
+    private var viewModel: GenreSelectionViewModel!
     private let disposeBag = DisposeBag()
     
-    static func create(with viewModel: LandingPageViewModel) -> LandingPageViewController {
-        let view = LandingPageViewController()
+    static func create(with viewModel: GenreSelectionViewModel) -> GenreSelectionViewController {
+        let view = GenreSelectionViewController()
         view.viewModel = viewModel
         return view
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = viewModel.screenTitle
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
-        navigationItem.rightBarButtonItem?.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.viewModel.didAddNewData()
-            }).disposed(by: disposeBag)
         
+        title = viewModel.screenTitle
+        navigationItem.largeTitleDisplayMode = .never
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
         tableView.dataSource = nil
@@ -34,12 +30,11 @@ class LandingPageViewController: UITableViewController {
             .bind(to: self.tableView.rx.items(cellIdentifier: "Cell",
                                               cellType: UITableViewCell.self)) { _, item, cell in
                 cell.textLabel?.text = item.name
-                cell.accessoryType = .disclosureIndicator
             }.disposed(by: disposeBag)
         
         tableView.rx.itemSelected
             .subscribe(onNext: { [weak self] in
-                self?.viewModel.didSelectGenre(at: $0.row)
+                self?.viewModel.didSelectItem(at: $0.row)
             }).disposed(by: disposeBag)
     }
 }

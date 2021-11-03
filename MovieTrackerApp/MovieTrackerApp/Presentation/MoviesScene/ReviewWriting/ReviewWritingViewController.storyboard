@@ -75,6 +75,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="datePicker" destination="dC9-Bd-og4" id="M25-ti-Lsw"/>
                         <outlet property="doneButton" destination="77z-eL-Yer" id="GDg-4h-cSS"/>
                         <outlet property="textView" destination="Wt0-oq-8zh" id="bE9-Tv-kpf"/>
                     </connections>

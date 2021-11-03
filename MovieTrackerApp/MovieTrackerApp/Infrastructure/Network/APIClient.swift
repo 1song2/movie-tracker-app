@@ -17,7 +17,7 @@ enum APIError: Error {
 }
 
 protocol APIClient {
-    func getMovies(query: String) -> Observable<MoviesResponseDTO>
+    func getMovies(query: MovieQuery) -> Observable<MoviesResponseDTO>
 }
 
 // MARK: - Implementation
@@ -69,7 +69,7 @@ final class DefaultAPIClient {
 }
 
 extension DefaultAPIClient: APIClient {
-    func getMovies(query: String) -> Observable<MoviesResponseDTO> {
+    func getMovies(query: MovieQuery) -> Observable<MoviesResponseDTO> {
         return request(Router.getMovies(query: query))
     }
 }
