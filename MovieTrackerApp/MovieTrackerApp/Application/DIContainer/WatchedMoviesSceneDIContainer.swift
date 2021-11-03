@@ -36,6 +36,17 @@ final class WatchedMoviesSceneDIContainer {
         return DefaultGenreSelectionViewModel(actions: actions)
     }
     
+    // MARK: - Movies Search
+    func makeMoviesSearchViewController(genre: Genre,
+                                        actions: MoviesSearchViewModelActions) -> MoviesSearchViewController {
+        return MoviesSearchViewController.create(with: makeMoviesSearchViewModel(genre: genre, actions: actions))
+    }
+    
+    func makeMoviesSearchViewModel(genre: Genre,
+                                   actions: MoviesSearchViewModelActions) -> MoviesSearchViewModel {
+        return DefaultMoviesSearchViewModel(genre: genre, apiClient: dependencies.apiClient, actions: actions)
+    }
+    
     // MARK: - Flow Coordinators
     func makeWatchedMoviesFlowCoordinator(tabBarController: UITabBarController) -> WatchedMoviesFlowCoordinator {
         return WatchedMoviesFlowCoordinator(tabBarController: tabBarController,

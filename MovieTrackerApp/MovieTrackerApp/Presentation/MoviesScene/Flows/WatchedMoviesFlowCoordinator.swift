@@ -10,6 +10,8 @@ import UIKit
 protocol WatchedMoviesFlowCoordinatorDependencies {
     func makeLandingPageViewController(actions: LandingPageViewModelActions) -> LandingPageViewController
     func makeGenreSelectionViewController(actions: GenreSelectionViewModelActions) -> GenreSelectionViewController
+    func makeMoviesSearchViewController(genre: Genre,
+                                        actions: MoviesSearchViewModelActions) -> MoviesSearchViewController
 }
 
 final class WatchedMoviesFlowCoordinator {
@@ -50,8 +52,8 @@ final class WatchedMoviesFlowCoordinator {
     }
     
     private func showMovieSearchPage(genre: Genre) {
-        let viewController = MoviesSearchViewController.create()
-        viewController.navigationItem.prompt = genre.name
+        let actions = MoviesSearchViewModelActions(showReviewWriting: showReviewWriting)
+        let viewController = dependencies.makeMoviesSearchViewController(genre: genre, actions: actions)
         genreSelectionVC?.navigationController?.pushViewController(viewController, animated: true)
     }
     
@@ -60,6 +62,12 @@ final class WatchedMoviesFlowCoordinator {
         viewController.title = genre.name
         viewController.hidesBottomBarWhenPushed = true
         watchListNavigationVC?.pushViewController(viewController, animated: true)
+    }
+    
+    private func showReviewWriting(movie: Movie) {
+        let viewController = ReviewWritingViewController.create()
+        viewController.navigationItem.prompt = movie.title
+        print(movie.title ?? "couldn't get movie name")
     }
     
     private func createNavigationController(for rootVC: UIViewController,

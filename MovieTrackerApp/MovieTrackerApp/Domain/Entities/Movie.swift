@@ -17,5 +17,5 @@ struct Movie {
 }
 
 struct Movies {
-    let movies: [Movie]
+    var movies: [Movie]
 }
