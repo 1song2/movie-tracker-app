@@ -29,13 +29,13 @@ class LandingPageViewController: UITableViewController {
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
-        let genre = ["스릴러", "액션", "로맨스"]
         tableView.dataSource = nil
-        Observable.just(genre).bind(to: self.tableView.rx.items(cellIdentifier: "Cell",
-                                                                cellType: UITableViewCell.self)) { _, item, cell in
-            cell.textLabel?.text = item
-            cell.accessoryType = .disclosureIndicator
-        }.disposed(by: disposeBag)
+        Observable.just(viewModel.items)
+            .bind(to: self.tableView.rx.items(cellIdentifier: "Cell",
+                                              cellType: UITableViewCell.self)) { _, item, cell in
+                cell.textLabel?.text = item.name
+                cell.accessoryType = .disclosureIndicator
+            }.disposed(by: disposeBag)
         
         tableView.rx.itemSelected
             .subscribe(onNext: { [weak self] in
