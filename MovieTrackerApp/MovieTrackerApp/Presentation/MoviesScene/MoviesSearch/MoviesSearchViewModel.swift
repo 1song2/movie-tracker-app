@@ -21,6 +21,7 @@ protocol MoviesSearchViewModelInput {
 
 protocol MoviesSearchViewModelOutput {
     var items: BehaviorSubject<[MovieItemViewModel]> { get }
+    var selectedItem: BehaviorSubject<Movie?> { get }
     var searchText: String { get }
     var genreCode: String? { get }
     var error: PublishSubject<String> { get }
@@ -36,11 +37,11 @@ final class DefaultMoviesSearchViewModel: MoviesSearchViewModel {
     private let apiClient: APIClient
     private let actions: MoviesSearchViewModelActions?
     private var movies: Movies = Movies(movies: [])
-    private var selectedItem: Movie?
     
     // MARK: - OUTPUT
     
     let items: BehaviorSubject<[MovieItemViewModel]> = BehaviorSubject<[MovieItemViewModel]>(value: [])
+    var selectedItem: BehaviorSubject<Movie?> = BehaviorSubject<Movie?>(value: nil)
     var searchText: String = ""
     let genreCode: String?
     let error: PublishSubject<String> = PublishSubject<String>()
@@ -62,6 +63,7 @@ final class DefaultMoviesSearchViewModel: MoviesSearchViewModel {
     // MARK: - Private
     
     private func resetPages() {
+        selectedItem.onNext(nil)
         movies.movies.removeAll()
         items.onNext([])
     }
@@ -103,11 +105,11 @@ extension DefaultMoviesSearchViewModel {
     }
     
     func didSelectItem(at index: Int) {
-        selectedItem = movies.movies[index]
+        selectedItem.onNext(movies.movies[index])
     }
     
     func didTapNextButton() {
-        guard let selectedItem = selectedItem else { return }
+        guard let selectedItem = try? selectedItem.value() else { return }
         actions?.showReviewWriting(selectedItem)
     }
 }

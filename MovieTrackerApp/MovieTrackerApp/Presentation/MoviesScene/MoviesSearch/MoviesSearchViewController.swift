@@ -49,6 +49,11 @@ class MoviesSearchViewController: UIViewController, StoryboardInstantiable {
                 self?.tableView.cellForRow(at: $0)?.accessoryType = .none
             }).disposed(by: disposeBag)
         
+        viewModel.selectedItem
+            .map { $0 != nil }
+            .bind(to: nextButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
         nextButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
                 self?.viewModel.didTapNextButton()
