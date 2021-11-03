@@ -27,6 +27,15 @@ final class WatchedMoviesSceneDIContainer {
         return DefaultLandingPageViewModel(actions: actions)
     }
     
+    // MARK: - Genre Selection
+    func makeGenreSelectionViewController(actions: GenreSelectionViewModelActions) -> GenreSelectionViewController {
+        return GenreSelectionViewController.create(with: makeGenreSelectionViewModel(actions: actions))
+    }
+    
+    func makeGenreSelectionViewModel(actions: GenreSelectionViewModelActions) -> GenreSelectionViewModel {
+        return DefaultGenreSelectionViewModel(actions: actions)
+    }
+    
     // MARK: - Flow Coordinators
     func makeWatchedMoviesFlowCoordinator(tabBarController: UITabBarController) -> WatchedMoviesFlowCoordinator {
         return WatchedMoviesFlowCoordinator(tabBarController: tabBarController,

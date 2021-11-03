@@ -9,6 +9,7 @@ import UIKit
 
 protocol WatchedMoviesFlowCoordinatorDependencies {
     func makeLandingPageViewController(actions: LandingPageViewModelActions) -> LandingPageViewController
+    func makeGenreSelectionViewController(actions: GenreSelectionViewModelActions) -> GenreSelectionViewController
 }
 
 final class WatchedMoviesFlowCoordinator {
@@ -18,6 +19,7 @@ final class WatchedMoviesFlowCoordinator {
     private weak var landingPageVC: LandingPageViewController?
     private weak var watchListNavigationVC: UINavigationController?
     private weak var settingsNavigationVC: UINavigationController?
+    private weak var genreSelectionVC: GenreSelectionViewController?
     
     init(tabBarController: UITabBarController,
          dependencies: WatchedMoviesFlowCoordinatorDependencies) {
@@ -40,14 +42,22 @@ final class WatchedMoviesFlowCoordinator {
     }
     
     private func showGenreSelection() {
-        let viewController = GenreSelectionViewController.create()
+        let actions = GenreSelectionViewModelActions(showMovieSearchPage: showMovieSearchPage)
+        let viewController = dependencies.makeGenreSelectionViewController(actions: actions)
         viewController.hidesBottomBarWhenPushed = true
         watchListNavigationVC?.pushViewController(viewController, animated: true)
+        genreSelectionVC = viewController
+    }
+    
+    private func showMovieSearchPage(genre: Genre) {
+        let viewController = MoviesSearchViewController.create()
+        viewController.navigationItem.prompt = genre.name
+        genreSelectionVC?.navigationController?.pushViewController(viewController, animated: true)
     }
     
     private func showWatchlist(genre: Genre) {
         let viewController = WatchedMoviesViewController.create()
-        // viewController.title = genre[$0.row]
+        viewController.title = genre.name
         viewController.hidesBottomBarWhenPushed = true
         watchListNavigationVC?.pushViewController(viewController, animated: true)
     }
