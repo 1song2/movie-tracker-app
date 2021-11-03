@@ -26,9 +26,7 @@ protocol MoviesSearchViewModelOutput {
     var error: PublishSubject<String> { get }
     var screenTitle: String { get }
     var promptTitle: String { get }
-    var emptyDataTitle: String { get }
     var errorTitle: String { get }
-    var searchBarPlaceholder: String { get }
 }
 
 protocol MoviesSearchViewModel: MoviesSearchViewModelInput, MoviesSearchViewModelOutput {}
@@ -48,9 +46,7 @@ final class DefaultMoviesSearchViewModel: MoviesSearchViewModel {
     let error: PublishSubject<String> = PublishSubject<String>()
     let screenTitle = NSLocalizedString("영화 이름이 무엇인가요?", comment: "")
     let promptTitle: String
-    let emptyDataTitle = NSLocalizedString("Search results", comment: "")
     let errorTitle = NSLocalizedString("Error", comment: "")
-    let searchBarPlaceholder = NSLocalizedString("Search Movies", comment: "")
     
     // MARK: - Init
     
