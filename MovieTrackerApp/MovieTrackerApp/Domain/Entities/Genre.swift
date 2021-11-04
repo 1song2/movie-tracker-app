@@ -18,5 +18,7 @@ class Item: Object {
     @objc dynamic var movie: Movie? = Movie()
     @objc dynamic var watchedOn: Date = Date()
     @objc dynamic var notes: String = ""
+    @objc dynamic var recordedOn: Date = Date()
+    @objc dynamic var isBookmarked: Bool = false
     var parentGenre = LinkingObjects(fromType: Genre.self, property: "items")
 }

@@ -55,6 +55,7 @@ extension DefaultReviewWritingViewModel {
                 newItem.movie = movie
                 newItem.watchedOn = watchedOn ?? Date()
                 newItem.notes = notes ?? ""
+                newItem.recordedOn = Date()
                 genre.items.append(newItem)
             }
         } catch {
