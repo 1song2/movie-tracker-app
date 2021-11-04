@@ -9,6 +9,7 @@ import UIKit
 
 protocol WatchedMoviesFlowCoordinatorDependencies {
     func makeLandingPageViewController(actions: LandingPageViewModelActions) -> LandingPageViewController
+    func makeSettingsViewController(actions: SettingsViewModelActions) -> SettingsViewController
     func makeGenreSelectionViewController(actions: GenreSelectionViewModelActions) -> GenreSelectionViewController
     func makeMoviesSearchViewController(genre: Genre,
                                         actions: MoviesSearchViewModelActions) -> MoviesSearchViewController
@@ -21,6 +22,7 @@ final class WatchedMoviesFlowCoordinator {
     private let dependencies: WatchedMoviesFlowCoordinatorDependencies
     
     private weak var landingPageVC: LandingPageViewController?
+    private weak var settingVC: SettingsViewController?
     private weak var watchListNavigationVC: UINavigationController?
     private weak var settingsNavigationVC: UINavigationController?
     private weak var genreSelectionVC: GenreSelectionViewController?
@@ -34,17 +36,28 @@ final class WatchedMoviesFlowCoordinator {
     }
     
     func start() {
-        let actions = LandingPageViewModelActions(showGenreSelection: showGenreSelection,
-                                                  showWatchlist: showWatchlist)
-        let viewController = dependencies.makeLandingPageViewController(actions: actions)
-        watchListNavigationVC = createNavigationController(for: viewController,
+        let landingPageActions = LandingPageViewModelActions(showGenreSelection: showGenreSelection,
+                                                             showWatchlist: showWatchlist)
+        let landingPageViewController = dependencies.makeLandingPageViewController(actions: landingPageActions)
+        watchListNavigationVC = createNavigationController(for: landingPageViewController,
                                                               title: "기록",
                                                               image: UIImage(named: "list"))
         tabBarController?.viewControllers = [
             watchListNavigationVC ?? UIViewController(),
             createNavigationController(for: UIViewController(), title: "설정", image: UIImage(named: "setting"))
         ]
-        landingPageVC = viewController
+        landingPageVC = landingPageViewController
+        
+        let settingsActions = SettingsViewModelActions(showAddGenreModal: showAddGenreAlert)
+        let settingsViewController = dependencies.makeSettingsViewController(actions: settingsActions)
+        settingsNavigationVC = createNavigationController(for: settingsViewController,
+                                                             title: "설정",
+                                                             image: UIImage(named: "setting"))
+        tabBarController?.viewControllers = [
+            watchListNavigationVC ?? UIViewController(),
+            settingsNavigationVC ?? UIViewController()
+        ]
+        settingVC = settingsViewController
     }
     
     private func showGenreSelection() {
@@ -60,6 +73,26 @@ final class WatchedMoviesFlowCoordinator {
         let viewController = dependencies.makeMoviesSearchViewController(genre: genre, actions: actions)
         genreSelectionVC?.navigationController?.pushViewController(viewController, animated: true)
         moviesSearchViewController = viewController
+    }
+    
+    private func showAddGenreAlert() {
+        var textField = UITextField()
+        let alert = UIAlertController(title: "카테고리 추가", message: nil, preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "완료", style: .default) { (action) in
+        }
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel) { (action) in
+        }
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "카테고리 이름을 입력하세요."
+            textField = alertTextField
+        }
+        
+        alert.addAction(confirmAction)
+        alert.addAction(cancelAction)
+        settingVC?.present(alert, animated: true, completion: nil)
     }
     
     private func showWatchlist(genre: Genre) {
