@@ -45,7 +45,7 @@ class SettingsViewController: UITableViewController {
     }
     
     private func setupView() {
-        title = viewModel.screenTitle
+        navigationItem.title = viewModel.screenTitle
         emptyDataLabel.text = viewModel.emptyDataTitle
         emptyDataLabel.textColor = .gray
         emptyDataLabel.font = UIFont.preferredFont(forTextStyle: .body)

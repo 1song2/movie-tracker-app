@@ -20,7 +20,7 @@ class LandingPageViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = viewModel.screenTitle
+        navigationItem.title = viewModel.screenTitle
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
         navigationItem.rightBarButtonItem?.rx.tap
             .subscribe(onNext: { [weak self] in
