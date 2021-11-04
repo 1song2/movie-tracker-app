@@ -6,7 +6,7 @@
 
 | 기록 탭 (랜딩 페이지)                                        | 설정 탭                                       | 영화 검색 페이지                                             | 장르별 영화 리스트 페이지                                    |
 | ------------------------------------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![landing](https://user-images.githubusercontent.com/56751259/140325956-64741188-5d0f-411c-ab4f-00ca2e3efcf2.png) | ![settings](/Users/song/Desktop/settings.png) | ![search-movie](https://user-images.githubusercontent.com/56751259/140327178-4ff53c45-fcde-4485-b33a-fe9679660650.png) | ![watched-movie-list](https://user-images.githubusercontent.com/56751259/140326920-7555c023-0d4c-4181-9026-64cd9a3c681e.png) |
+| ![landing](https://user-images.githubusercontent.com/56751259/140325956-64741188-5d0f-411c-ab4f-00ca2e3efcf2.png) | ![settings](https://user-images.githubusercontent.com/56751259/140335673-288792cd-2f9d-4683-bf21-43a41d982e75.png) | ![search-movie](https://user-images.githubusercontent.com/56751259/140327178-4ff53c45-fcde-4485-b33a-fe9679660650.png) | ![watched-movie-list](https://user-images.githubusercontent.com/56751259/140326920-7555c023-0d4c-4181-9026-64cd9a3c681e.png) |
 
 ## 화면/기능별 기본 동작
 
