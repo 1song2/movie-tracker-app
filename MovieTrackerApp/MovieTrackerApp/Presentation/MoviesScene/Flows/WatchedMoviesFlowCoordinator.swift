@@ -97,7 +97,7 @@ final class WatchedMoviesFlowCoordinator {
     
     private func showWatchlist(genre: Genre) {
         let viewController = WatchedMoviesViewController.create()
-        viewController.title = genre.name
+        viewController.title = genre.title
         viewController.hidesBottomBarWhenPushed = true
         watchListNavigationVC?.pushViewController(viewController, animated: true)
     }

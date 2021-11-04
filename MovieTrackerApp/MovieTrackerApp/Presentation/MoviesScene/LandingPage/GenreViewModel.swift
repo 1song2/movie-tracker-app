@@ -11,6 +11,6 @@ struct GenreViewModel {
     let name: String
     
     init(genre: Genre) {
-        self.name = genre.name
+        self.name = genre.title
     }
 }

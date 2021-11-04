@@ -45,7 +45,7 @@ extension MoviesResponseDTO.MovieDTO {
     func toDomain() -> Movie {
         return .init(title: title,
                      link: link,
-                     releaseYear: Int(releaseYear ?? ""),
+                     releaseYear: releaseYear,
                      director: director,
                      cast: cast,
                      userRating: userRating)
