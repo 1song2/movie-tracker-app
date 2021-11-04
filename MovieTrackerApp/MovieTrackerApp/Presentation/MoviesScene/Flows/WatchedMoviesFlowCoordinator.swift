@@ -16,6 +16,7 @@ protocol WatchedMoviesFlowCoordinatorDependencies {
     func makeReviewWritingViewController(genre: Genre,
                                          movie: Movie,
                                          actions: ReviewWritingViewModelActions) -> ReviewWritingViewController
+    func makeWatchedMoviesViewController(genre: Genre) -> WatchedMoviesViewController
 }
 
 final class WatchedMoviesFlowCoordinator {
@@ -38,7 +39,7 @@ final class WatchedMoviesFlowCoordinator {
     
     func start() {
         let landingPageActions = LandingPageViewModelActions(showGenreSelection: showGenreSelection,
-                                                             showWatchlist: showWatchlist)
+                                                             showWatchedMovies: showWatchedMovies)
         let landingPageViewController = dependencies.makeLandingPageViewController(actions: landingPageActions)
         watchListNavigationVC = createNavigationController(for: landingPageViewController,
                                                               title: "기록",
@@ -80,8 +81,8 @@ final class WatchedMoviesFlowCoordinator {
         settingVC?.present(alert, animated: true, completion: nil)
     }
     
-    private func showWatchlist(genre: Genre) {
-        let viewController = WatchedMoviesViewController.create()
+    private func showWatchedMovies(genre: Genre) {
+        let viewController = dependencies.makeWatchedMoviesViewController(genre: genre)
         viewController.title = genre.title
         viewController.hidesBottomBarWhenPushed = true
         watchListNavigationVC?.pushViewController(viewController, animated: true)
