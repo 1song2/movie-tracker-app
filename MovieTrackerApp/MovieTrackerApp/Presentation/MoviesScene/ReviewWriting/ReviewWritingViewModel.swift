@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import RealmSwift
 
 struct ReviewWritingViewModelActions {
-    let addDataToWatchedHistory: (WatchedMovieData) -> Void
+    let goToLandingPage: () -> Void
 }
 
 protocol ReviewWritingViewModelInput {
@@ -22,7 +23,9 @@ protocol ReviewWritingViewModelOutput {
 protocol ReviewWritingViewModel: ReviewWritingViewModelInput, ReviewWritingViewModelOutput {}
 
 final class DefaultReviewWritingViewModel: ReviewWritingViewModel {
+    private let realm = try! Realm()
     private let actions: ReviewWritingViewModelActions?
+    private var genre: Genre
     private var movie: Movie
     
     // MARK: - OUTPUT
@@ -31,9 +34,11 @@ final class DefaultReviewWritingViewModel: ReviewWritingViewModel {
     
     // MARK: - Init
     
-    init(movie: Movie,
+    init(genre: Genre,
+         movie: Movie,
          actions: ReviewWritingViewModelActions? = nil) {
-        self.screenTitle = movie.title ?? ""
+        self.screenTitle = movie.title?.htmlEscaped ?? ""
+        self.genre = genre
         self.movie = movie
         self.actions = actions
     }
@@ -43,14 +48,17 @@ final class DefaultReviewWritingViewModel: ReviewWritingViewModel {
 
 extension DefaultReviewWritingViewModel {
     func didTapDoneButton(watchedOn: Date?, notes: String?) {
-        actions?.addDataToWatchedHistory(WatchedMovieData(movie: movie,
-                                                          watchedOn: watchedOn ?? Date(),
-                                                          notes: notes ?? ""))
+        actions?.goToLandingPage()
+        do {
+            try realm.write {
+                let newItem = Item()
+                newItem.movie = movie
+                newItem.watchedOn = watchedOn ?? Date()
+                newItem.notes = notes ?? ""
+                genre.items.append(newItem)
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
     }
-}
-
-struct WatchedMovieData {
-    let movie: Movie
-    let watchedOn: Date
-    let notes: String
 }

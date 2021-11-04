@@ -13,7 +13,8 @@ protocol WatchedMoviesFlowCoordinatorDependencies {
     func makeGenreSelectionViewController(actions: GenreSelectionViewModelActions) -> GenreSelectionViewController
     func makeMoviesSearchViewController(genre: Genre,
                                         actions: MoviesSearchViewModelActions) -> MoviesSearchViewController
-    func makeReviewWritingViewController(movie: Movie,
+    func makeReviewWritingViewController(genre: Genre,
+                                         movie: Movie,
                                          actions: ReviewWritingViewModelActions) -> ReviewWritingViewController
 }
 
@@ -48,7 +49,7 @@ final class WatchedMoviesFlowCoordinator {
         ]
         landingPageVC = landingPageViewController
         
-        let settingsActions = SettingsViewModelActions(showAddGenreModal: showAddGenreAlert)
+        let settingsActions = SettingsViewModelActions(showAddGenreAlert: showAddGenreAlert)
         let settingsViewController = dependencies.makeSettingsViewController(actions: settingsActions)
         settingsNavigationVC = createNavigationController(for: settingsViewController,
                                                              title: "설정",
@@ -75,43 +76,26 @@ final class WatchedMoviesFlowCoordinator {
         moviesSearchViewController = viewController
     }
     
-    private func showAddGenreAlert() {
-        var textField = UITextField()
-        let alert = UIAlertController(title: "카테고리 추가", message: nil, preferredStyle: .alert)
-        
-        let confirmAction = UIAlertAction(title: "완료", style: .default) { (action) in
-        }
-        
-        let cancelAction = UIAlertAction(title: "취소", style: .cancel) { (action) in
-        }
-        
-        alert.addTextField { (alertTextField) in
-            alertTextField.placeholder = "카테고리 이름을 입력하세요."
-            textField = alertTextField
-        }
-        
-        alert.addAction(confirmAction)
-        alert.addAction(cancelAction)
+    private func showAddGenreAlert(alert: UIAlertController) {
         settingVC?.present(alert, animated: true, completion: nil)
     }
     
     private func showWatchlist(genre: Genre) {
         let viewController = WatchedMoviesViewController.create()
-        viewController.title = genre.name
+        viewController.title = genre.title
         viewController.hidesBottomBarWhenPushed = true
         watchListNavigationVC?.pushViewController(viewController, animated: true)
     }
     
-    private func showReviewWriting(movie: Movie) {
-        let actions = ReviewWritingViewModelActions(addDataToWatchedHistory: addDataToWatchedHistory)
-        let viewController = dependencies.makeReviewWritingViewController(movie: movie, actions: actions)
+    private func showReviewWriting(genre: Genre, movie: Movie) {
+        let actions = ReviewWritingViewModelActions(goToLandingPage: addDataToWatchedHistory)
+        let viewController = dependencies.makeReviewWritingViewController(genre: genre, movie: movie, actions: actions)
         moviesSearchViewController?.navigationController?.pushViewController(viewController, animated: true)
         reviewWritingViewController = viewController
     }
     
-    private func addDataToWatchedHistory(data: WatchedMovieData) {
+    private func addDataToWatchedHistory() {
         reviewWritingViewController?.navigationController?.popToRootViewController(animated: true)
-        // Realm
     }
     
     private func createNavigationController(for rootVC: UIViewController,

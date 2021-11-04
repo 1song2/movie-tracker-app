@@ -6,6 +6,9 @@
 //
 
 import Foundation
+import RxSwift
+import RealmSwift
+import RxRealm
 
 struct LandingPageViewModelActions {
     let showGenreSelection: () -> Void
@@ -18,28 +21,28 @@ protocol LandingPageViewModelInput {
 }
 
 protocol LandingPageViewModelOutput {
-    var items: [GenreViewModel] { get }
+    var items: Observable<Results<Genre>> { get }
     var screenTitle: String { get }
 }
 
 protocol LandingPageViewModel: LandingPageViewModelInput, LandingPageViewModelOutput {}
 
 final class DefaultLandingPageViewModel: LandingPageViewModel {
+    private let realm = try! Realm()
     private let actions: LandingPageViewModelActions?
-    private var myGenres: [Genre] = [Genre(code: "7", name: "스릴러"),
-                                     Genre(code: "19", name: "액션"),
-                                     Genre(code: "5", name: "로맨스")]
+    private var myGenres: Results<Genre>
     
     // MARK: - OUTPUT
 
-    let items: [GenreViewModel]
+    let items: Observable<Results<Genre>>
     let screenTitle = NSLocalizedString("나의 영화 노트", comment: "")
     
     // MARK: - Init
     
     init(actions: LandingPageViewModelActions? = nil) {
         self.actions = actions
-        items = myGenres.map(GenreViewModel.init)
+        myGenres = realm.objects(Genre.self)
+        items = Observable.collection(from: myGenres)
     }
 }
 

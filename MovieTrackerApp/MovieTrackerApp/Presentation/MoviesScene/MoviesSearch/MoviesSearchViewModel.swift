@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 struct MoviesSearchViewModelActions {
-    let showReviewWriting: (Movie) -> Void
+    let showReviewWriting: (Genre, Movie) -> Void
 }
 
 protocol MoviesSearchViewModelInput {
@@ -23,7 +23,6 @@ protocol MoviesSearchViewModelOutput {
     var items: BehaviorSubject<[MovieItemViewModel]> { get }
     var selectedItem: BehaviorSubject<Movie?> { get }
     var searchText: String { get }
-    var genreCode: String? { get }
     var error: PublishSubject<String> { get }
     var screenTitle: String { get }
     var promptTitle: String { get }
@@ -37,13 +36,13 @@ final class DefaultMoviesSearchViewModel: MoviesSearchViewModel {
     private let apiClient: APIClient
     private let actions: MoviesSearchViewModelActions?
     private var movies: Movies = Movies(movies: [])
+    private var selectedGenre: Genre
     
     // MARK: - OUTPUT
     
     let items: BehaviorSubject<[MovieItemViewModel]> = BehaviorSubject<[MovieItemViewModel]>(value: [])
     var selectedItem: BehaviorSubject<Movie?> = BehaviorSubject<Movie?>(value: nil)
     var searchText: String = ""
-    let genreCode: String?
     let error: PublishSubject<String> = PublishSubject<String>()
     let screenTitle = NSLocalizedString("영화 이름이 무엇인가요?", comment: "")
     let promptTitle: String
@@ -54,10 +53,10 @@ final class DefaultMoviesSearchViewModel: MoviesSearchViewModel {
     init(genre: Genre,
          apiClient: APIClient,
          actions: MoviesSearchViewModelActions? = nil) {
-        self.promptTitle = "장르: \(genre.name)"
-        self.genreCode = genre.code
+        self.promptTitle = "장르: \(genre.title)"
         self.actions = actions
         self.apiClient = apiClient
+        self.selectedGenre = genre
     }
     
     // MARK: - Private
@@ -70,7 +69,7 @@ final class DefaultMoviesSearchViewModel: MoviesSearchViewModel {
     
     private func load(searchText: String) {
         self.searchText = searchText
-        apiClient.getMovies(query: MovieQuery(query: searchText, genre: genreCode))
+        apiClient.getMovies(query: MovieQuery(query: searchText))
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
@@ -110,6 +109,6 @@ extension DefaultMoviesSearchViewModel {
     
     func didTapNextButton() {
         guard let selectedItem = try? selectedItem.value() else { return }
-        actions?.showReviewWriting(selectedItem)
+        actions?.showReviewWriting(selectedGenre, selectedItem)
     }
 }

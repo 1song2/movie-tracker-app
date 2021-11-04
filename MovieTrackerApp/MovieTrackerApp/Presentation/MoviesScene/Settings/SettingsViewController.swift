@@ -34,7 +34,7 @@ class SettingsViewController: UITableViewController {
         viewModel.items
             .bind(to: self.tableView.rx.items(cellIdentifier: "Cell",
                                               cellType: UITableViewCell.self)) { _, item, cell in
-                cell.textLabel?.text = item.name
+                cell.textLabel?.text = item.title
                 cell.accessoryView = UISwitch()
             }.disposed(by: disposeBag)
         

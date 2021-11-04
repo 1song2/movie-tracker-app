@@ -7,9 +7,11 @@
 
 import Foundation
 import RxSwift
+import RealmSwift
+import RxRealm
 
 struct SettingsViewModelActions {
-    let showAddGenreModal: () -> Void
+    let showAddGenreAlert: (UIAlertController) -> Void
 }
 
 protocol SettingsViewModelInput {
@@ -17,7 +19,7 @@ protocol SettingsViewModelInput {
 }
 
 protocol SettingsViewModelOutput {
-    var items: BehaviorSubject<[GenreViewModel]> { get }
+    var items: Observable<Results<Genre>> { get }
     var screenTitle: String { get }
     var emptyDataTitle: String { get }
 }
@@ -25,14 +27,13 @@ protocol SettingsViewModelOutput {
 protocol SettingsViewModel: SettingsViewModelInput, SettingsViewModelOutput {}
 
 final class DefaultSettingsViewModel: SettingsViewModel {
+    private let realm = try! Realm()
     private let actions: SettingsViewModelActions?
-    private var myGenres: [Genre] = [Genre(code: "7", name: "스릴러"),
-                                     Genre(code: "19", name: "액션"),
-                                     Genre(code: "5", name: "로맨스")]
+    private var myGenres: Results<Genre>
     
     // MARK: - OUTPUT
 
-    let items: BehaviorSubject<[GenreViewModel]> = BehaviorSubject<[GenreViewModel]>(value: [])
+    let items: Observable<Results<Genre>>
     let screenTitle = NSLocalizedString("장르 관리", comment: "")
     let emptyDataTitle = NSLocalizedString("카테고리를 추가해주세요.", comment: "")
     
@@ -40,7 +41,8 @@ final class DefaultSettingsViewModel: SettingsViewModel {
     
     init(actions: SettingsViewModelActions? = nil) {
         self.actions = actions
-        items.onNext(myGenres.map(GenreViewModel.init))
+        myGenres = realm.objects(Genre.self)
+        items = Observable.collection(from: myGenres)
     }
 }
 
@@ -48,6 +50,31 @@ final class DefaultSettingsViewModel: SettingsViewModel {
 
 extension DefaultSettingsViewModel {
     func didAddNewGenre() {
-        actions?.showAddGenreModal()
+        var textField = UITextField()
+        let alert = UIAlertController(title: "카테고리 추가", message: nil, preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "완료", style: .default) { [weak self] _ in
+            let newCategory = Genre()
+            newCategory.title = textField.text ?? ""
+            do {
+                try self?.realm.write {
+                    self?.realm.add(newCategory)
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "카테고리 이름을 입력하세요."
+            textField = alertTextField
+        }
+        
+        alert.addAction(confirmAction)
+        alert.addAction(cancelAction)
+        
+        actions?.showAddGenreAlert(alert)
     }
 }
