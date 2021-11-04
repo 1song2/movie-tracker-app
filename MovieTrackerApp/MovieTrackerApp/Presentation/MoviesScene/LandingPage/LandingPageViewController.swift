@@ -30,10 +30,10 @@ class LandingPageViewController: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
         tableView.dataSource = nil
-        Observable.just(viewModel.items)
+        viewModel.items
             .bind(to: self.tableView.rx.items(cellIdentifier: "Cell",
                                               cellType: UITableViewCell.self)) { _, item, cell in
-                cell.textLabel?.text = item.name
+                cell.textLabel?.text = item.title
                 cell.accessoryType = .disclosureIndicator
             }.disposed(by: disposeBag)
         

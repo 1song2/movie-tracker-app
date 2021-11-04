@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 struct GenreSelectionViewModelActions {
     let showMovieSearchPage: (Genre) -> Void
@@ -23,8 +24,9 @@ protocol GenreSelectionViewModelOutput {
 protocol GenreSelectionViewModel: GenreSelectionViewModelInput, GenreSelectionViewModelOutput {}
 
 final class DefaultGenreSelectionViewModel: GenreSelectionViewModel {
+    private let realm = try! Realm()
     private let actions: GenreSelectionViewModelActions?
-    private var genres: [Genre] = []
+    private var myGenres: Results<Genre>
     
     // MARK: - OUTPUT
     
@@ -35,7 +37,8 @@ final class DefaultGenreSelectionViewModel: GenreSelectionViewModel {
     
     init(actions: GenreSelectionViewModelActions? = nil) {
         self.actions = actions
-        items = genres.map(GenreViewModel.init)
+        myGenres = realm.objects(Genre.self)
+        items = myGenres.map(GenreViewModel.init)
     }
 }
 
@@ -43,6 +46,6 @@ final class DefaultGenreSelectionViewModel: GenreSelectionViewModel {
 
 extension DefaultGenreSelectionViewModel {
     func didSelectItem(at index: Int) {
-        actions?.showMovieSearchPage(genres[index])
+        actions?.showMovieSearchPage(myGenres[index])
     }
 }

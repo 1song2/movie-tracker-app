@@ -19,14 +19,9 @@ extension MovieItemViewModel {
         let releaseYear = movie.releaseYear
         var userRating = movie.userRating
         
-        var convertedReleaseYear = ""
-        if let releaseYear = releaseYear {
-            convertedReleaseYear = "\(releaseYear)"
-        }
-        
         userRating = (userRating == "0.00" || userRating == nil) ? nil : userRating
         
         let separator = (releaseYear != nil && userRating != nil) ? ", " : ""
-        self.description = [convertedReleaseYear, userRating ?? ""].joined(separator: separator)
+        self.description = [releaseYear ?? "", userRating ?? ""].joined(separator: separator)
     }
 }
