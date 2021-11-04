@@ -21,7 +21,7 @@ extension MovieItemViewModel {
         
         userRating = (userRating == "0.00" || userRating == nil) ? nil : userRating
         
-        let separator = (releaseYear != nil && userRating != nil) ? ", " : ""
+        let separator = (releaseYear != "" && userRating != nil) ? ", " : ""
         self.description = [releaseYear ?? "", userRating ?? ""].joined(separator: separator)
     }
 }
