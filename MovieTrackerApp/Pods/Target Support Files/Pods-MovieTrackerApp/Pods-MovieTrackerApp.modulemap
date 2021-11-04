@@ -1,6 +1,0 @@
-framework module Pods_MovieTrackerApp {
-  umbrella header "Pods-MovieTrackerApp-umbrella.h"
-
-  export *
-  module * { export * }
-}
