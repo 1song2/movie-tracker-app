@@ -8,11 +8,9 @@
 import Foundation
 
 struct GenreViewModel {
-    let code: String?
     let name: String
     
     init(genre: Genre) {
-        self.code = genre.code
-        self.name = (genre.code == nil) ? "전체" : genre.name
+        self.name = genre.name
     }
 }

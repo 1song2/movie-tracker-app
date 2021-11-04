@@ -9,5 +9,4 @@ import Foundation
 
 struct MovieQuery {
     let query: String
-    var genre: String?
 }

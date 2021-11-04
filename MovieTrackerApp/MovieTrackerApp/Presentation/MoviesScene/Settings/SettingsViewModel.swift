@@ -26,9 +26,7 @@ protocol SettingsViewModel: SettingsViewModelInput, SettingsViewModelOutput {}
 
 final class DefaultSettingsViewModel: SettingsViewModel {
     private let actions: SettingsViewModelActions?
-    private var myGenres: [Genre] = [Genre(code: "7", name: "스릴러"),
-                                     Genre(code: "19", name: "액션"),
-                                     Genre(code: "5", name: "로맨스")]
+    private var myGenres: [Genre] = []
     
     // MARK: - OUTPUT
 

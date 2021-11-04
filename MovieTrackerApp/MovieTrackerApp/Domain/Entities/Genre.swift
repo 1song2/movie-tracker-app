@@ -8,6 +8,5 @@
 import Foundation
 
 struct Genre {
-    let code: String?
     let name: String
 }
