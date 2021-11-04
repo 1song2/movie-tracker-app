@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 struct MoviesSearchViewModelActions {
-    let showReviewWriting: (Movie) -> Void
+    let showReviewWriting: (Genre, Movie) -> Void
 }
 
 protocol MoviesSearchViewModelInput {
@@ -36,6 +36,7 @@ final class DefaultMoviesSearchViewModel: MoviesSearchViewModel {
     private let apiClient: APIClient
     private let actions: MoviesSearchViewModelActions?
     private var movies: Movies = Movies(movies: [])
+    private var selectedGenre: Genre
     
     // MARK: - OUTPUT
     
@@ -55,6 +56,7 @@ final class DefaultMoviesSearchViewModel: MoviesSearchViewModel {
         self.promptTitle = "장르: \(genre.title)"
         self.actions = actions
         self.apiClient = apiClient
+        self.selectedGenre = genre
     }
     
     // MARK: - Private
@@ -107,6 +109,6 @@ extension DefaultMoviesSearchViewModel {
     
     func didTapNextButton() {
         guard let selectedItem = try? selectedItem.value() else { return }
-        actions?.showReviewWriting(selectedItem)
+        actions?.showReviewWriting(selectedGenre, selectedItem)
     }
 }

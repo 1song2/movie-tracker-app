@@ -57,14 +57,18 @@ final class WatchedMoviesSceneDIContainer {
     }
     
     // MARK: - Review Writing
-    func makeReviewWritingViewController(movie: Movie,
+    func makeReviewWritingViewController(genre: Genre,
+                                         movie: Movie,
                                          actions: ReviewWritingViewModelActions) -> ReviewWritingViewController {
-        return ReviewWritingViewController.create(with: makeReviewWritingViewModel(movie: movie, actions: actions))
+        return ReviewWritingViewController.create(with: makeReviewWritingViewModel(genre: genre,
+                                                                                   movie: movie,
+                                                                                   actions: actions))
     }
     
-    func makeReviewWritingViewModel(movie: Movie,
+    func makeReviewWritingViewModel(genre: Genre,
+                                    movie: Movie,
                                     actions: ReviewWritingViewModelActions) -> ReviewWritingViewModel {
-        return DefaultReviewWritingViewModel(movie: movie, actions: actions)
+        return DefaultReviewWritingViewModel(genre: genre, movie: movie, actions: actions)
     }
     
     // MARK: - Flow Coordinators
