@@ -27,6 +27,15 @@ final class WatchedMoviesSceneDIContainer {
         return DefaultLandingPageViewModel(actions: actions)
     }
     
+    // MARK: - Settings
+    func makeSettingsViewController(actions: SettingsViewModelActions) -> SettingsViewController {
+        return SettingsViewController.create(with: makeSettingsViewModel(actions: actions))
+    }
+    
+    func makeSettingsViewModel(actions: SettingsViewModelActions) -> SettingsViewModel {
+        return DefaultSettingsViewModel(actions: actions)
+    }
+    
     // MARK: - Genre Selection
     func makeGenreSelectionViewController(actions: GenreSelectionViewModelActions) -> GenreSelectionViewController {
         return GenreSelectionViewController.create(with: makeGenreSelectionViewModel(actions: actions))

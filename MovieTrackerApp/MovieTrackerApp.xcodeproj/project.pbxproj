@@ -28,6 +28,8 @@
 		E452C8222732449000481E7A /* MovieItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E452C8212732449000481E7A /* MovieItemViewModel.swift */; };
 		E452C8242732452000481E7A /* MovieQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = E452C8232732452000481E7A /* MovieQuery.swift */; };
 		E452C8262732757300481E7A /* ReviewWritingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E452C8252732757300481E7A /* ReviewWritingViewModel.swift */; };
+		E452C8312733614300481E7A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E452C8302733614300481E7A /* SettingsViewController.swift */; };
+		E452C8342733615500481E7A /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E452C8332733615500481E7A /* SettingsViewModel.swift */; };
 		E486FA09272EF5A500B10BDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA08272EF5A500B10BDA /* AppDelegate.swift */; };
 		E486FA0D272EF5A500B10BDA /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E486FA0C272EF5A500B10BDA /* LandingPageViewController.swift */; };
 		E486FA12272EF5A800B10BDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E486FA11272EF5A800B10BDA /* Assets.xcassets */; };
@@ -95,6 +97,8 @@
 		E452C8212732449000481E7A /* MovieItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieItemViewModel.swift; sourceTree = "<group>"; };
 		E452C8232732452000481E7A /* MovieQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuery.swift; sourceTree = "<group>"; };
 		E452C8252732757300481E7A /* ReviewWritingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWritingViewModel.swift; sourceTree = "<group>"; };
+		E452C8302733614300481E7A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E452C8332733615500481E7A /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		E486FA05272EF5A500B10BDA /* MovieTrackerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieTrackerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E486FA08272EF5A500B10BDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E486FA0C272EF5A500B10BDA /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
@@ -249,6 +253,15 @@
 				E452C81C2732439D00481E7A /* String+HTMLEscaped.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E452C8322733614800481E7A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E452C8302733614300481E7A /* SettingsViewController.swift */,
+				E452C8332733615500481E7A /* SettingsViewModel.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		E486F9FC272EF5A500B10BDA = {
@@ -415,6 +428,7 @@
 				E42865EB2731237C00B4E594 /* ReviewWriting */,
 				E42865CB2730DDA600B4E594 /* ModalViewController.swift */,
 				E42865D12730F0BF00B4E594 /* ContainerView.swift */,
+				E452C8322733614800481E7A /* Settings */,
 			);
 			path = MoviesScene;
 			sourceTree = "<group>";
@@ -712,11 +726,13 @@
 				E42865D82730F2D800B4E594 /* SortingView.swift in Sources */,
 				E4BB8FBC2730516B00657DBA /* WatchedMoviesViewController.swift in Sources */,
 				E486FA6427300F9100B10BDA /* Router.swift in Sources */,
+				E452C8342733615500481E7A /* SettingsViewModel.swift in Sources */,
 				E4BB8FC02730D54300657DBA /* StoryboardInstantiable.swift in Sources */,
 				E486FA62272FD91200B10BDA /* AppFlowCoordinator.swift in Sources */,
 				E42865D22730F0BF00B4E594 /* ContainerView.swift in Sources */,
 				E486FA3F272F064200B10BDA /* AppConfigurations.swift in Sources */,
 				E42865CC2730DDA600B4E594 /* ModalViewController.swift in Sources */,
+				E452C8312733614300481E7A /* SettingsViewController.swift in Sources */,
 				E486FA09272EF5A500B10BDA /* AppDelegate.swift in Sources */,
 				E486FA5A272FD2EA00B10BDA /* AppDIContainer.swift in Sources */,
 				E42865FB273209D000B4E594 /* GenreSelectionViewModel.swift in Sources */,
