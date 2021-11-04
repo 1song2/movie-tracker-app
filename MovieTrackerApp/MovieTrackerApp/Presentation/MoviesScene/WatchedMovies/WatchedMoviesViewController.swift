@@ -13,7 +13,7 @@ class WatchedMoviesViewController: UIViewController, StoryboardInstantiable {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var sortingButton: UIButton!
     
-    private var viewModel: WatchedMoviesViewModel!
+    var viewModel: WatchedMoviesViewModel!
     private let disposeBag = DisposeBag()
     
     static func create(with viewModel: WatchedMoviesViewModel) -> WatchedMoviesViewController {
@@ -39,10 +39,14 @@ class WatchedMoviesViewController: UIViewController, StoryboardInstantiable {
             }.disposed(by: disposeBag)
         
         sortingButton.rx.tap
-            .subscribe(onNext: {
-                let viewController = ModalViewController()
-                viewController.modalPresentationStyle = .overCurrentContext
-                self.present(viewController, animated: false)
+            .subscribe(onNext: { [weak self] in
+                self?.viewModel.didTapSortingButton(sortingBy: self?.viewModel.selectedSortingBy.value)
+            }).disposed(by: disposeBag)
+        
+        viewModel.selectedSortingBy
+            .map { $0.title }
+            .subscribe(onNext: { [weak self] in
+                self?.sortingButton.setTitle($0, for: [])
             }).disposed(by: disposeBag)
     }
 }

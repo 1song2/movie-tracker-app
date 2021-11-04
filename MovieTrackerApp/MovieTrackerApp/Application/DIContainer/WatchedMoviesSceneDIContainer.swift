@@ -72,12 +72,14 @@ final class WatchedMoviesSceneDIContainer {
     }
     
     // MARK: - Watched Movies
-    func makeWatchedMoviesViewController(genre: Genre) -> WatchedMoviesViewController {
-        return WatchedMoviesViewController.create(with: makeWatchedMoviesViewModel(genre: genre))
+    func makeWatchedMoviesViewController(genre: Genre,
+                                         actions: WatchedMoviesViewModelActions) -> WatchedMoviesViewController {
+        return WatchedMoviesViewController.create(with: makeWatchedMoviesViewModel(genre: genre, actions: actions))
     }
     
-    func makeWatchedMoviesViewModel(genre: Genre) -> WatchedMoviesViewModel {
-        return DefaultWatchedMoviesViewModel(genre: genre)
+    func makeWatchedMoviesViewModel(genre: Genre,
+                                    actions: WatchedMoviesViewModelActions) -> WatchedMoviesViewModel {
+        return DefaultWatchedMoviesViewModel(genre: genre, actions: actions)
     }
     
     // MARK: - Flow Coordinators
