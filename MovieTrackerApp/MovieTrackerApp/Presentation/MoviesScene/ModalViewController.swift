@@ -8,9 +8,15 @@
 import UIKit
 import RxSwift
 
+protocol SortingModalDelegate: AnyObject {
+    func dismissModal(sortingBy: SortingBy)
+}
+
 class ModalViewController: UIViewController {
     private let disposeBag = DisposeBag()
     lazy var containerView = SortingView()
+    private var viewModel: SortingViewModel!
+    weak var delegate: SortingModalDelegate?
     
     let maxDimmedAlpha: CGFloat = 0.6
     lazy var dimmedView: UIView = {
@@ -24,8 +30,15 @@ class ModalViewController: UIViewController {
     var containerViewHeightConstraint: NSLayoutConstraint?
     var containerViewBottomConstraint: NSLayoutConstraint?
     
+    static func create(with viewModel: SortingViewModel) -> ModalViewController {
+        let view = ModalViewController()
+        view.viewModel = viewModel
+        return view
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        containerView.viewModel = viewModel
         setupView()
         setupConstraints()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleCloseAction))
@@ -100,5 +113,8 @@ class ModalViewController: UIViewController {
             self.containerViewBottomConstraint?.constant = self.defaultHeight
             self.view.layoutIfNeeded()
         }
+        
+        delegate?.dismissModal(sortingBy: viewModel.selectingSortingBy)
+        containerView.disposeBag = DisposeBag()
     }
 }

@@ -12,7 +12,7 @@ import RxRealm
 
 struct LandingPageViewModelActions {
     let showGenreSelection: () -> Void
-    let showWatchlist: (Genre) -> Void
+    let showWatchedMovies: (Genre) -> Void
 }
 
 protocol LandingPageViewModelInput {
@@ -50,7 +50,7 @@ final class DefaultLandingPageViewModel: LandingPageViewModel {
 
 extension DefaultLandingPageViewModel {
     func didSelectGenre(at index: Int) {
-        actions?.showWatchlist(myGenres[index])
+        actions?.showWatchedMovies(myGenres[index])
     }
     
     func didAddNewData() {

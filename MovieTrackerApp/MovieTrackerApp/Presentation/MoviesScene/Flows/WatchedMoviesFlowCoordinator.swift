@@ -16,19 +16,22 @@ protocol WatchedMoviesFlowCoordinatorDependencies {
     func makeReviewWritingViewController(genre: Genre,
                                          movie: Movie,
                                          actions: ReviewWritingViewModelActions) -> ReviewWritingViewController
+    func makeWatchedMoviesViewController(genre: Genre,
+                                         actions: WatchedMoviesViewModelActions) -> WatchedMoviesViewController
 }
 
 final class WatchedMoviesFlowCoordinator {
     private weak var tabBarController: UITabBarController?
     private let dependencies: WatchedMoviesFlowCoordinatorDependencies
     
+    private weak var watchedMoviesNavigationVC: UINavigationController?
     private weak var landingPageVC: LandingPageViewController?
-    private weak var settingVC: SettingsViewController?
-    private weak var watchListNavigationVC: UINavigationController?
     private weak var settingsNavigationVC: UINavigationController?
+    private weak var settingsVC: SettingsViewController?
     private weak var genreSelectionVC: GenreSelectionViewController?
-    private weak var moviesSearchViewController: MoviesSearchViewController?
-    private weak var reviewWritingViewController: ReviewWritingViewController?
+    private weak var moviesSearchVC: MoviesSearchViewController?
+    private weak var reviewWritingVC: ReviewWritingViewController?
+    private weak var watchedMoviesVC: WatchedMoviesViewController?
     
     init(tabBarController: UITabBarController,
          dependencies: WatchedMoviesFlowCoordinatorDependencies) {
@@ -38,13 +41,13 @@ final class WatchedMoviesFlowCoordinator {
     
     func start() {
         let landingPageActions = LandingPageViewModelActions(showGenreSelection: showGenreSelection,
-                                                             showWatchlist: showWatchlist)
+                                                             showWatchedMovies: showWatchedMovies)
         let landingPageViewController = dependencies.makeLandingPageViewController(actions: landingPageActions)
-        watchListNavigationVC = createNavigationController(for: landingPageViewController,
+        watchedMoviesNavigationVC = createNavigationController(for: landingPageViewController,
                                                               title: "기록",
                                                               image: UIImage(named: "list"))
         tabBarController?.viewControllers = [
-            watchListNavigationVC ?? UIViewController(),
+            watchedMoviesNavigationVC ?? UIViewController(),
             createNavigationController(for: UIViewController(), title: "설정", image: UIImage(named: "setting"))
         ]
         landingPageVC = landingPageViewController
@@ -55,17 +58,17 @@ final class WatchedMoviesFlowCoordinator {
                                                              title: "설정",
                                                              image: UIImage(named: "setting"))
         tabBarController?.viewControllers = [
-            watchListNavigationVC ?? UIViewController(),
+            watchedMoviesNavigationVC ?? UIViewController(),
             settingsNavigationVC ?? UIViewController()
         ]
-        settingVC = settingsViewController
+        settingsVC = settingsViewController
     }
     
     private func showGenreSelection() {
         let actions = GenreSelectionViewModelActions(showMovieSearchPage: showMovieSearchPage)
         let viewController = dependencies.makeGenreSelectionViewController(actions: actions)
         viewController.hidesBottomBarWhenPushed = true
-        watchListNavigationVC?.pushViewController(viewController, animated: true)
+        watchedMoviesNavigationVC?.pushViewController(viewController, animated: true)
         genreSelectionVC = viewController
     }
     
@@ -73,29 +76,44 @@ final class WatchedMoviesFlowCoordinator {
         let actions = MoviesSearchViewModelActions(showReviewWriting: showReviewWriting)
         let viewController = dependencies.makeMoviesSearchViewController(genre: genre, actions: actions)
         genreSelectionVC?.navigationController?.pushViewController(viewController, animated: true)
-        moviesSearchViewController = viewController
+        moviesSearchVC = viewController
     }
     
     private func showAddGenreAlert(alert: UIAlertController) {
-        settingVC?.present(alert, animated: true, completion: nil)
+        settingsVC?.present(alert, animated: true, completion: nil)
     }
     
-    private func showWatchlist(genre: Genre) {
-        let viewController = WatchedMoviesViewController.create()
+    private func showWatchedMovies(genre: Genre) {
+        let actions = WatchedMoviesViewModelActions(showSortingModal: showSortingModal)
+        let viewController = dependencies.makeWatchedMoviesViewController(genre: genre, actions: actions)
         viewController.title = genre.title
         viewController.hidesBottomBarWhenPushed = true
-        watchListNavigationVC?.pushViewController(viewController, animated: true)
+        watchedMoviesNavigationVC?.pushViewController(viewController, animated: true)
+        watchedMoviesVC = viewController
     }
+    
+    private func showSortingModal(selectedSortingBy: SortingBy?) {
+        // let actions = SortingViewModelActions(sendDataToWatchedMovies: sendDataToWatchedMovies)
+        let viewModel = DefaultSortingViewModel(sortingBy: selectedSortingBy)
+        let viewController = ModalViewController.create(with: viewModel)
+        viewController.modalPresentationStyle = .overCurrentContext
+        watchedMoviesVC?.present(viewController, animated: false)
+        viewController.delegate = watchedMoviesVC?.viewModel
+    }
+    
+//     private func sendDataToWatchedMovies(sortingBy: SortingBy) {
+//         viewController.delegate = watchedMoviesVC
+//     }
     
     private func showReviewWriting(genre: Genre, movie: Movie) {
         let actions = ReviewWritingViewModelActions(goToLandingPage: addDataToWatchedHistory)
         let viewController = dependencies.makeReviewWritingViewController(genre: genre, movie: movie, actions: actions)
-        moviesSearchViewController?.navigationController?.pushViewController(viewController, animated: true)
-        reviewWritingViewController = viewController
+        moviesSearchVC?.navigationController?.pushViewController(viewController, animated: true)
+        reviewWritingVC = viewController
     }
     
     private func addDataToWatchedHistory() {
-        reviewWritingViewController?.navigationController?.popToRootViewController(animated: true)
+        reviewWritingVC?.navigationController?.popToRootViewController(animated: true)
     }
     
     private func createNavigationController(for rootVC: UIViewController,
