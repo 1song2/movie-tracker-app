@@ -33,7 +33,7 @@ class WatchedMoviesViewController: UIViewController, StoryboardInstantiable {
                 let cell = UITableViewCell(style: .value1, reuseIdentifier: "Cell")
                 cell.textLabel?.text = item.movie?.title?.htmlEscaped
                 cell.imageView?.image = item.isBookmarked ? UIImage(named: "heart-fill") : UIImage(named: "heart")
-                cell.detailTextLabel?.text = dateFormatter.string(from: item.watchedOn)
+                cell.detailTextLabel?.text = DateFormatter.medium.string(from: item.watchedOn)
                 cell.accessoryType = .disclosureIndicator
                 return cell
             }.disposed(by: disposeBag)
@@ -50,9 +50,3 @@ class WatchedMoviesViewController: UIViewController, StoryboardInstantiable {
             }).disposed(by: disposeBag)
     }
 }
-
-private let dateFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .medium
-    return formatter
-}()

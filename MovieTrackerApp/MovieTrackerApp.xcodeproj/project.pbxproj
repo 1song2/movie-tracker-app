@@ -10,6 +10,7 @@
 		72ED1DD09D63F870F681048D /* Pods_MovieTrackerApp_MovieTrackerAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3567DEE0EE6DDCC9A0D9063B /* Pods_MovieTrackerApp_MovieTrackerAppUITests.framework */; };
 		9D75470532318BA54C7D3F12 /* Pods_MovieTrackerAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58D914E59A8B5379E3A4EF71 /* Pods_MovieTrackerAppTests.framework */; };
 		BEC0158275A88719306C22B6 /* Pods_MovieTrackerApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2941776D73E37201196CEB65 /* Pods_MovieTrackerApp.framework */; };
+		E4248379273BBB4C00443026 /* DateFormatter+Medium.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4248378273BBB4C00443026 /* DateFormatter+Medium.swift */; };
 		E42865CC2730DDA600B4E594 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42865CB2730DDA600B4E594 /* ModalViewController.swift */; };
 		E42865D22730F0BF00B4E594 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42865D12730F0BF00B4E594 /* ContainerView.swift */; };
 		E42865D82730F2D800B4E594 /* SortingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42865D72730F2D800B4E594 /* SortingView.swift */; };
@@ -81,6 +82,7 @@
 		58D914E59A8B5379E3A4EF71 /* Pods_MovieTrackerAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieTrackerAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A7464ADAA5B3B58E98AB599 /* Pods-MovieTrackerAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTrackerAppTests.debug.xcconfig"; path = "Target Support Files/Pods-MovieTrackerAppTests/Pods-MovieTrackerAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E1CF001E409DFA6229E54867 /* Pods-MovieTrackerAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTrackerAppTests.release.xcconfig"; path = "Target Support Files/Pods-MovieTrackerAppTests/Pods-MovieTrackerAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		E4248378273BBB4C00443026 /* DateFormatter+Medium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Medium.swift"; sourceTree = "<group>"; };
 		E42865CB2730DDA600B4E594 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		E42865D12730F0BF00B4E594 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		E42865D72730F2D800B4E594 /* SortingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingView.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				E452C81C2732439D00481E7A /* String+HTMLEscaped.swift */,
+				E4248378273BBB4C00443026 /* DateFormatter+Medium.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -746,6 +749,7 @@
 				E486FA49272FBAE600B10BDA /* NetworkService.swift in Sources */,
 				E486FA60272FD7C400B10BDA /* WatchedMoviesFlowCoordinator.swift in Sources */,
 				E42865E22731159D00B4E594 /* MoviesSearchViewController.swift in Sources */,
+				E4248379273BBB4C00443026 /* DateFormatter+Medium.swift in Sources */,
 				E452C8262732757300481E7A /* ReviewWritingViewModel.swift in Sources */,
 				E452C83D2733B44100481E7A /* WatchedMoviesViewModel.swift in Sources */,
 				E486FA4D272FC08400B10BDA /* Movie.swift in Sources */,
