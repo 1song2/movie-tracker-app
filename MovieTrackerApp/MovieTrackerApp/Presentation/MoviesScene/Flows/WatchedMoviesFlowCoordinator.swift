@@ -86,7 +86,6 @@ final class WatchedMoviesFlowCoordinator {
     private func showWatchedMovies(genre: Genre) {
         let actions = WatchedMoviesViewModelActions(showSortingModal: showSortingModal)
         let viewController = dependencies.makeWatchedMoviesViewController(genre: genre, actions: actions)
-        viewController.title = genre.title
         viewController.hidesBottomBarWhenPushed = true
         watchedMoviesNavigationVC?.pushViewController(viewController, animated: true)
         watchedMoviesVC = viewController
