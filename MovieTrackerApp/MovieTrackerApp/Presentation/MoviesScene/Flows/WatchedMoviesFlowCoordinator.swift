@@ -18,6 +18,7 @@ protocol WatchedMoviesFlowCoordinatorDependencies {
                                          actions: ReviewWritingViewModelActions) -> ReviewWritingViewController
     func makeWatchedMoviesViewController(genre: Genre,
                                          actions: WatchedMoviesViewModelActions) -> WatchedMoviesViewController
+    func makeItemDetailsViewController(item: Item) -> ItemDetailsViewController
 }
 
 final class WatchedMoviesFlowCoordinator {
@@ -84,11 +85,17 @@ final class WatchedMoviesFlowCoordinator {
     }
     
     private func showWatchedMovies(genre: Genre) {
-        let actions = WatchedMoviesViewModelActions(showSortingModal: showSortingModal)
+        let actions = WatchedMoviesViewModelActions(showItemDetails: showItemDetails,
+                                                    showSortingModal: showSortingModal)
         let viewController = dependencies.makeWatchedMoviesViewController(genre: genre, actions: actions)
         viewController.hidesBottomBarWhenPushed = true
         watchedMoviesNavigationVC?.pushViewController(viewController, animated: true)
         watchedMoviesVC = viewController
+    }
+    
+    private func showItemDetails(item: Item) {
+        let viewController = dependencies.makeItemDetailsViewController(item: item)
+        watchedMoviesVC?.navigationController?.pushViewController(viewController, animated: true)
     }
     
     private func showSortingModal(selectedSortingBy: SortingBy?) {

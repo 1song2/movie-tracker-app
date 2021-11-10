@@ -39,6 +39,11 @@ class WatchedMoviesViewController: UIViewController, StoryboardInstantiable {
                 return cell
             }.disposed(by: disposeBag)
         
+        tableView.rx.itemSelected
+            .subscribe(onNext: { [weak self] in
+                self?.viewModel.didSelectItem(at: $0.row)
+            }).disposed(by: disposeBag)
+        
         sortingButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 self?.viewModel.didTapSortingButton(sortingBy: self?.viewModel.selectedSortingBy.value)
