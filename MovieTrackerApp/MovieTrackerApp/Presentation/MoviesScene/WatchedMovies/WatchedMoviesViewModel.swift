@@ -12,10 +12,12 @@ import RxRealm
 import RxRelay
 
 struct WatchedMoviesViewModelActions {
+    let showItemDetails: (Item) -> Void
     let showSortingModal: (SortingBy?) -> Void
 }
 
 protocol WatchedMoviesViewModelInput {
+    func didSelectItem(at index: Int)
     func didTapSortingButton(sortingBy: SortingBy?)
 }
 
@@ -59,6 +61,10 @@ final class DefaultWatchedMoviesViewModel: WatchedMoviesViewModel {
 // MARK: - INPUT. View event methods
 
 extension DefaultWatchedMoviesViewModel {
+    func didSelectItem(at index: Int) {
+        actions?.showItemDetails(watchedMoviesLog[index])
+    }
+    
     func didTapSortingButton(sortingBy: SortingBy?) {
         actions?.showSortingModal(sortingBy)
     }

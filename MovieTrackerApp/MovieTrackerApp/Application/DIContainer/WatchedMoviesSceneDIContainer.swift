@@ -82,6 +82,17 @@ final class WatchedMoviesSceneDIContainer {
         return DefaultWatchedMoviesViewModel(genre: genre, actions: actions)
     }
     
+    // MARK: - Item Details
+    func makeItemDetailsViewController(item: Item,
+                                       actions: ItemDetailsViewModelActions) -> ItemDetailsViewController {
+        return ItemDetailsViewController.create(with: makeItemDetailsViewModel(item: item, actions: actions))
+    }
+    
+    func makeItemDetailsViewModel(item: Item,
+                                  actions: ItemDetailsViewModelActions) -> ItemDetailsViewModel {
+        return DefaultItemDetailsViewModel(item: item, actions: actions)
+    }
+    
     // MARK: - Flow Coordinators
     func makeWatchedMoviesFlowCoordinator(tabBarController: UITabBarController) -> WatchedMoviesFlowCoordinator {
         return WatchedMoviesFlowCoordinator(tabBarController: tabBarController,

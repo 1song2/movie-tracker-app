@@ -24,6 +24,7 @@ class WatchedMoviesViewController: UIViewController, StoryboardInstantiable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = viewModel.screenTitle
         navigationItem.largeTitleDisplayMode = .never
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
@@ -33,10 +34,15 @@ class WatchedMoviesViewController: UIViewController, StoryboardInstantiable {
                 let cell = UITableViewCell(style: .value1, reuseIdentifier: "Cell")
                 cell.textLabel?.text = item.movie?.title?.htmlEscaped
                 cell.imageView?.image = item.isBookmarked ? UIImage(named: "heart-fill") : UIImage(named: "heart")
-                cell.detailTextLabel?.text = dateFormatter.string(from: item.watchedOn)
+                cell.detailTextLabel?.text = DateFormatter.medium.string(from: item.watchedOn)
                 cell.accessoryType = .disclosureIndicator
                 return cell
             }.disposed(by: disposeBag)
+        
+        tableView.rx.itemSelected
+            .subscribe(onNext: { [weak self] in
+                self?.viewModel.didSelectItem(at: $0.row)
+            }).disposed(by: disposeBag)
         
         sortingButton.rx.tap
             .subscribe(onNext: { [weak self] in
@@ -50,9 +56,3 @@ class WatchedMoviesViewController: UIViewController, StoryboardInstantiable {
             }).disposed(by: disposeBag)
     }
 }
-
-private let dateFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .medium
-    return formatter
-}()

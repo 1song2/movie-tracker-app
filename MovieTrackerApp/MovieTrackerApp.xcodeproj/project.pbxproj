@@ -10,6 +10,7 @@
 		72ED1DD09D63F870F681048D /* Pods_MovieTrackerApp_MovieTrackerAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3567DEE0EE6DDCC9A0D9063B /* Pods_MovieTrackerApp_MovieTrackerAppUITests.framework */; };
 		9D75470532318BA54C7D3F12 /* Pods_MovieTrackerAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58D914E59A8B5379E3A4EF71 /* Pods_MovieTrackerAppTests.framework */; };
 		BEC0158275A88719306C22B6 /* Pods_MovieTrackerApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2941776D73E37201196CEB65 /* Pods_MovieTrackerApp.framework */; };
+		E4248379273BBB4C00443026 /* DateFormatter+Medium.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4248378273BBB4C00443026 /* DateFormatter+Medium.swift */; };
 		E42865CC2730DDA600B4E594 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42865CB2730DDA600B4E594 /* ModalViewController.swift */; };
 		E42865D22730F0BF00B4E594 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42865D12730F0BF00B4E594 /* ContainerView.swift */; };
 		E42865D82730F2D800B4E594 /* SortingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42865D72730F2D800B4E594 /* SortingView.swift */; };
@@ -54,6 +55,9 @@
 		E4BB8FBC2730516B00657DBA /* WatchedMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BB8FBB2730516B00657DBA /* WatchedMoviesViewController.swift */; };
 		E4BB8FBE27305BF300657DBA /* WatchedMoviesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4BB8FBD27305BF300657DBA /* WatchedMoviesViewController.storyboard */; };
 		E4BB8FC02730D54300657DBA /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BB8FBF2730D54300657DBA /* StoryboardInstantiable.swift */; };
+		E4CDF367273B5A5D00B11723 /* ItemDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4CDF366273B5A5D00B11723 /* ItemDetailsViewController.storyboard */; };
+		E4CDF36A273B614300B11723 /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CDF369273B614300B11723 /* ItemDetailsViewController.swift */; };
+		E4CDF36C273B630300B11723 /* ItemDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CDF36B273B630300B11723 /* ItemDetailsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +85,7 @@
 		58D914E59A8B5379E3A4EF71 /* Pods_MovieTrackerAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieTrackerAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A7464ADAA5B3B58E98AB599 /* Pods-MovieTrackerAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTrackerAppTests.debug.xcconfig"; path = "Target Support Files/Pods-MovieTrackerAppTests/Pods-MovieTrackerAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E1CF001E409DFA6229E54867 /* Pods-MovieTrackerAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTrackerAppTests.release.xcconfig"; path = "Target Support Files/Pods-MovieTrackerAppTests/Pods-MovieTrackerAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		E4248378273BBB4C00443026 /* DateFormatter+Medium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Medium.swift"; sourceTree = "<group>"; };
 		E42865CB2730DDA600B4E594 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		E42865D12730F0BF00B4E594 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		E42865D72730F2D800B4E594 /* SortingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingView.swift; sourceTree = "<group>"; };
@@ -129,6 +134,9 @@
 		E4BB8FBB2730516B00657DBA /* WatchedMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchedMoviesViewController.swift; sourceTree = "<group>"; };
 		E4BB8FBD27305BF300657DBA /* WatchedMoviesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WatchedMoviesViewController.storyboard; sourceTree = "<group>"; };
 		E4BB8FBF2730D54300657DBA /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
+		E4CDF366273B5A5D00B11723 /* ItemDetailsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemDetailsViewController.storyboard; sourceTree = "<group>"; };
+		E4CDF369273B614300B11723 /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
+		E4CDF36B273B630300B11723 /* ItemDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewModel.swift; sourceTree = "<group>"; };
 		FCE4ABED97AD8F7EE67FC0C3 /* Pods-MovieTrackerApp-MovieTrackerAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTrackerApp-MovieTrackerAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-MovieTrackerApp-MovieTrackerAppUITests/Pods-MovieTrackerApp-MovieTrackerAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FF0C44AD51EBF019ED19654E /* Pods-MovieTrackerApp-MovieTrackerAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTrackerApp-MovieTrackerAppUITests.release.xcconfig"; path = "Target Support Files/Pods-MovieTrackerApp-MovieTrackerAppUITests/Pods-MovieTrackerApp-MovieTrackerAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -257,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				E452C81C2732439D00481E7A /* String+HTMLEscaped.swift */,
+				E4248378273BBB4C00443026 /* DateFormatter+Medium.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -435,6 +444,7 @@
 				E42865DC27310E7100B4E594 /* WatchedMovies */,
 				E42865CB2730DDA600B4E594 /* ModalViewController.swift */,
 				E42865D12730F0BF00B4E594 /* ContainerView.swift */,
+				E4CDF368273B5A6A00B11723 /* ItemDetails */,
 			);
 			path = MoviesScene;
 			sourceTree = "<group>";
@@ -454,6 +464,16 @@
 				E4BB8FC12730D55100657DBA /* Protocols */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		E4CDF368273B5A6A00B11723 /* ItemDetails */ = {
+			isa = PBXGroup;
+			children = (
+				E4CDF369273B614300B11723 /* ItemDetailsViewController.swift */,
+				E4CDF36B273B630300B11723 /* ItemDetailsViewModel.swift */,
+				E4CDF366273B5A5D00B11723 /* ItemDetailsViewController.storyboard */,
+			);
+			path = ItemDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -567,6 +587,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4BB8FBE27305BF300657DBA /* WatchedMoviesViewController.storyboard in Resources */,
+				E4CDF367273B5A5D00B11723 /* ItemDetailsViewController.storyboard in Resources */,
 				E42865DA2730F2E000B4E594 /* SortingView.xib in Resources */,
 				E486FA3D272F004700B10BDA /* .swiftlint.yml in Resources */,
 				E42865E82731235200B4E594 /* ReviewWritingViewController.storyboard in Resources */,
@@ -725,8 +746,10 @@
 				E452C8202732446600481E7A /* MoviesSearchViewModel.swift in Sources */,
 				E42865EA2731237000B4E594 /* ReviewWritingViewController.swift in Sources */,
 				E42865DF2731105100B4E594 /* GenreSelectionViewController.swift in Sources */,
+				E4CDF36C273B630300B11723 /* ItemDetailsViewModel.swift in Sources */,
 				E486FA4B272FBB6300B10BDA /* APIClient.swift in Sources */,
 				E486FA43272FB66000B10BDA /* NetworkConfig.swift in Sources */,
+				E4CDF36A273B614300B11723 /* ItemDetailsViewController.swift in Sources */,
 				E452C8222732449000481E7A /* MovieItemViewModel.swift in Sources */,
 				E452C81D2732439D00481E7A /* String+HTMLEscaped.swift in Sources */,
 				E42865D82730F2D800B4E594 /* SortingView.swift in Sources */,
@@ -746,6 +769,7 @@
 				E486FA49272FBAE600B10BDA /* NetworkService.swift in Sources */,
 				E486FA60272FD7C400B10BDA /* WatchedMoviesFlowCoordinator.swift in Sources */,
 				E42865E22731159D00B4E594 /* MoviesSearchViewController.swift in Sources */,
+				E4248379273BBB4C00443026 /* DateFormatter+Medium.swift in Sources */,
 				E452C8262732757300481E7A /* ReviewWritingViewModel.swift in Sources */,
 				E452C83D2733B44100481E7A /* WatchedMoviesViewModel.swift in Sources */,
 				E486FA4D272FC08400B10BDA /* Movie.swift in Sources */,
