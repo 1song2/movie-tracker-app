@@ -83,12 +83,14 @@ final class WatchedMoviesSceneDIContainer {
     }
     
     // MARK: - Item Details
-    func makeItemDetailsViewController(item: Item) -> ItemDetailsViewController {
-        return ItemDetailsViewController.create(with: makeItemDetailsViewModel(item: item))
+    func makeItemDetailsViewController(item: Item,
+                                       actions: ItemDetailsViewModelActions) -> ItemDetailsViewController {
+        return ItemDetailsViewController.create(with: makeItemDetailsViewModel(item: item, actions: actions))
     }
     
-    func makeItemDetailsViewModel(item: Item) -> ItemDetailsViewModel {
-        return DefaultItemDetailsViewModel(item: item)
+    func makeItemDetailsViewModel(item: Item,
+                                  actions: ItemDetailsViewModelActions) -> ItemDetailsViewModel {
+        return DefaultItemDetailsViewModel(item: item, actions: actions)
     }
     
     // MARK: - Flow Coordinators

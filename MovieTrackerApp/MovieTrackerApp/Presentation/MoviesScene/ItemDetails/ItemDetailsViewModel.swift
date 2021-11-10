@@ -9,8 +9,13 @@ import Foundation
 import RealmSwift
 import RxRelay
 
+struct ItemDetailsViewModelActions {
+    let launchSafari: (URL) -> Void
+}
+
 protocol ItemDetailsViewModelInput {
     func didTapHeartButton()
+    func didTapSectionView()
 }
 
 protocol ItemDetailsViewModelOutput {
@@ -27,6 +32,7 @@ protocol ItemDetailsViewModel: ItemDetailsViewModelInput, ItemDetailsViewModelOu
 
 final class DefaultItemDetailsViewModel: ItemDetailsViewModel {
     private let realm = try! Realm()
+    private let actions: ItemDetailsViewModelActions?
     private let item: Item
     
     // MARK: - OUTPUT
@@ -41,7 +47,9 @@ final class DefaultItemDetailsViewModel: ItemDetailsViewModel {
     
     // MARK: - Init
     
-    init(item: Item) {
+    init(item: Item,
+         actions: ItemDetailsViewModelActions? = nil) {
+        self.actions = actions
         self.item = item
         self.screenTitle = item.movie?.title?.htmlEscaped ?? ""
         self.isBookmarked = BehaviorRelay<Bool>(value: item.isBookmarked)
@@ -67,5 +75,10 @@ extension DefaultItemDetailsViewModel {
         } catch {
             print(error.localizedDescription)
         }
+    }
+    
+    func didTapSectionView() {
+        guard let link = item.movie?.link, let url = URL(string: link) else { return }
+        actions?.launchSafari(url)
     }
 }

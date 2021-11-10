@@ -39,6 +39,12 @@ class ItemDetailsViewController: UIViewController, StoryboardInstantiable {
                 let image = $0 ? UIImage(named: "heart-fill") : UIImage(named: "heart")
                 self?.navigationItem.rightBarButtonItem?.image = image
             }).disposed(by: disposeBag)
+        
+        let tapGesture = UITapGestureRecognizer()
+        sectionView.addGestureRecognizer(tapGesture)
+        tapGesture.rx.event.bind(onNext: { [weak self] _ in
+            self?.viewModel.didTapSectionView()
+        }).disposed(by: disposeBag)
     }
     
     private func setupView() {

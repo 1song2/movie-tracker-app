@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 protocol WatchedMoviesFlowCoordinatorDependencies {
     func makeLandingPageViewController(actions: LandingPageViewModelActions) -> LandingPageViewController
@@ -18,7 +19,8 @@ protocol WatchedMoviesFlowCoordinatorDependencies {
                                          actions: ReviewWritingViewModelActions) -> ReviewWritingViewController
     func makeWatchedMoviesViewController(genre: Genre,
                                          actions: WatchedMoviesViewModelActions) -> WatchedMoviesViewController
-    func makeItemDetailsViewController(item: Item) -> ItemDetailsViewController
+    func makeItemDetailsViewController(item: Item,
+                                       actions: ItemDetailsViewModelActions) -> ItemDetailsViewController
 }
 
 final class WatchedMoviesFlowCoordinator {
@@ -33,6 +35,7 @@ final class WatchedMoviesFlowCoordinator {
     private weak var moviesSearchVC: MoviesSearchViewController?
     private weak var reviewWritingVC: ReviewWritingViewController?
     private weak var watchedMoviesVC: WatchedMoviesViewController?
+    private weak var itemDetailsVC: ItemDetailsViewController?
     
     init(tabBarController: UITabBarController,
          dependencies: WatchedMoviesFlowCoordinatorDependencies) {
@@ -45,8 +48,8 @@ final class WatchedMoviesFlowCoordinator {
                                                              showWatchedMovies: showWatchedMovies)
         let landingPageViewController = dependencies.makeLandingPageViewController(actions: landingPageActions)
         watchedMoviesNavigationVC = createNavigationController(for: landingPageViewController,
-                                                              title: "기록",
-                                                              image: UIImage(named: "list"))
+                                                                  title: "기록",
+                                                                  image: UIImage(named: "list"))
         tabBarController?.viewControllers = [
             watchedMoviesNavigationVC ?? UIViewController(),
             createNavigationController(for: UIViewController(), title: "설정", image: UIImage(named: "setting"))
@@ -94,8 +97,15 @@ final class WatchedMoviesFlowCoordinator {
     }
     
     private func showItemDetails(item: Item) {
-        let viewController = dependencies.makeItemDetailsViewController(item: item)
+        let actions = ItemDetailsViewModelActions(launchSafari: launchSafari)
+        let viewController = dependencies.makeItemDetailsViewController(item: item, actions: actions)
         watchedMoviesVC?.navigationController?.pushViewController(viewController, animated: true)
+        itemDetailsVC = viewController
+    }
+    
+    private func launchSafari(with url: URL) {
+        let safariViewController = SFSafariViewController(url: url)
+        itemDetailsVC?.present(safariViewController, animated: true, completion: nil)
     }
     
     private func showSortingModal(selectedSortingBy: SortingBy?) {
